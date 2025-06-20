@@ -1,3 +1,9 @@
+import { Header, Wrapper } from './components/layouts'
+
 export const App = () => {
-  return <div>123</div>
+  return (
+    <Wrapper>
+      <Header />
+    </Wrapper>
+  )
 }
