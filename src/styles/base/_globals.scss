@@ -36,12 +36,6 @@ body {
   min-height: 100vh;
 }
 
-main {
-  flex: 1;
-  @include fullSize;
-  min-height: 100vh;
-}
-
 img {
   height: auto;
   max-width: 100%;
