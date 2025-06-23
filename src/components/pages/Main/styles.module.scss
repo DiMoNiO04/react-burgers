@@ -1,0 +1,5 @@
+.filter {
+  @include flexCenterBetween;
+  column-gap: 80px;
+  flex-wrap: wrap;
+}
