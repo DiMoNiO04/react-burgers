@@ -1,6 +1,6 @@
 import { Categories } from '../../blocks'
 import { Header, Wrapper } from '../../layouts'
-import { Sort } from '../../ui'
+import { Sort, Title } from '../../ui'
 import styles from './styles.module.scss'
 
 export const MainPageContent = () => {
@@ -12,6 +12,7 @@ export const MainPageContent = () => {
           <Categories />
           <Sort />
         </div>
+        <Title title={'Все пиццы'} />
       </main>
     </Wrapper>
   )
