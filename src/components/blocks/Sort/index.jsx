@@ -9,22 +9,29 @@ export const Sort = () => {
   const [isOpenSort, setIsOpenSort] = useState(false)
   const [sortItem, setSortItem] = useState(0)
 
-  const changeSortItem = (index) => setSortItem(index)
-  const toggleOpenSort = () => setIsOpenSort(!isOpenSort)
+  const toggleOpenSort = () => setIsOpenSort((prev) => !prev)
+
+  const changeSortItem = (index) => {
+    setSortItem(index)
+    setIsOpenSort(false)
+  }
 
   return (
-    <div className={styles.block} onClick={toggleOpenSort}>
-      <div className={clsx(styles.label, isOpenSort && styles.labelOpen)}>
+    <div className={styles.block}>
+      <button type="button" className={clsx(styles.label, isOpenSort && styles.labelOpen)} onClick={toggleOpenSort}>
         <IconArrow />
         <b>Сортировать по:</b>
         <span>{DATA_SORT[sortItem].name}</span>
-      </div>
+      </button>
+
       {isOpenSort && (
-        <div className={styles.popup}>
+        <div className={styles.popup} role="listbox">
           <ul className={styles.popupList}>
             {DATA_SORT.map(({ name, value }) => (
-              <li key={name} className={clsx(styles.popupItem, sortItem === value && styles.itemActive)} onClick={() => changeSortItem(value)}>
-                {name}
+              <li key={value}>
+                <button type="button" className={clsx(styles.popupItem, sortItem === value && styles.itemActive)} onClick={() => changeSortItem(value)}>
+                  {name}
+                </button>
               </li>
             ))}
           </ul>
