@@ -1,4 +1,4 @@
-import { CardCart } from '../../blocks'
+import { CardCart, CartBottom } from '../../blocks'
 import { CartHeader } from '../../blocks/CartHeader'
 import { Header, Wrapper } from '../../layouts'
 import styles from './styles.module.scss'
@@ -18,6 +18,7 @@ export const CartPageContent = () => {
             <CardCart />
             <CardCart />
           </div>
+          <CartBottom />
         </div>
       </main>
     </Wrapper>
