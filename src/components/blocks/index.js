@@ -1,3 +1,5 @@
 export { Card } from './Card'
+export { CardCart } from './CardCart'
+export { CartHeader } from './CartHeader'
 export { Categories } from './Categories'
 export { Sort } from './Sort'

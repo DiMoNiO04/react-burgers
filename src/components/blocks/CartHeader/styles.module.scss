@@ -1,0 +1,37 @@
+.block {
+  @include flexCenterBetween;
+  column-gap: 40px;
+  margin-bottom: 32px;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.title,
+.btnClear {
+  @include flexCenter;
+  column-gap: 12px;
+}
+
+.btnClear {
+  span {
+    @include transition(color);
+    color: $gray;
+    font-size: 18px;
+  }
+
+  svg path {
+    @include transition(stroke);
+  }
+
+  @include hover {
+    span {
+      color: $black;
+    }
+
+    svg path {
+      stroke: $black;
+    }
+  }
+}

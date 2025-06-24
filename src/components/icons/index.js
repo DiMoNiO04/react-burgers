@@ -1,3 +1,6 @@
 export { IconArrow } from './IconArrow'
 export { IconCart } from './IconCart'
+export { IconCartClear } from './IconCartClear'
+export { IconClose } from './IconClose'
+export { IconMinus } from './IconMinus'
 export { IconPlus } from './IconPlus'

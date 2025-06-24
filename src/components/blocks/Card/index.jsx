@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 export const Card = () => {
   return (
     <div className={styles.block}>
-      <img className={styles.image} src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Pizza" />
+      <img className={styles.image} src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
       <h3 className={styles.title}>Чикен Тар-Тар</h3>
       <div className={styles.selector}>
         <ul className={styles.selectorList}>
