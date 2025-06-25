@@ -1,0 +1,75 @@
+.block {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.label {
+  @include flexCenter;
+  @include transition(border-color);
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid $whiteDark;
+  border-radius: 12px;
+  background-color: $white;
+
+  @include hover {
+    border-color: $orange;
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  span {
+    color: $orange;
+    font-weight: 600;
+  }
+
+  svg {
+    @include transition(transform);
+    transform: rotate(180deg);
+  }
+}
+
+.labelOpen {
+  border-color: $orange;
+
+  svg {
+    transform: rotate(0);
+  }
+}
+
+.popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 5;
+  background-color: $white;
+  border: 1px solid $whiteDark;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+}
+
+.popupItem {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  padding: 10px 16px;
+  width: 100%;
+  cursor: pointer;
+
+  &:not(.itemActive) {
+    &:hover {
+      background-color: $orange;
+      color: $white;
+    }
+  }
+
+  &.itemActive {
+    color: $orange;
+  }
+}

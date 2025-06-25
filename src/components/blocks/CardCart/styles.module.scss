@@ -1,0 +1,115 @@
+.card {
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 1fr 2fr 1fr;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border-top: 1px solid $whiteDark;
+  padding-top: 24px;
+}
+
+.img {
+  @include flexCenter;
+  @include sizes(100px, 100px);
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.info {
+  @include flexColumn;
+  row-gap: 8px;
+  justify-content: center;
+
+  h3 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  p {
+    font-size: 18px;
+    color: $gray;
+    font-weight: 400;
+    font-style: italic;
+  }
+}
+
+.count {
+  @include flexCenterBetween;
+  column-gap: 8px;
+
+  b {
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+.price {
+  @include flexCenter;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.remove {
+  @include flexCenterEnd;
+}
+
+.countBtn,
+.btnRemove {
+  @include sizes(40px, 40px);
+  @include flexCenter;
+  @include transition(border-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: transparent;
+
+  svg {
+    @include sizes(12px, 12px);
+
+    path {
+      @include transition(fill);
+    }
+  }
+}
+
+.btnRemove {
+  border: 1.5px solid $grayDark;
+
+  svg {
+    transform: rotate(45deg);
+
+    path {
+      fill: $grayDark;
+    }
+  }
+
+  @include hover {
+    border-color: $black;
+
+    svg path {
+      fill: $black;
+    }
+  }
+}
+
+.countBtn {
+  border: 1.5px solid $orange;
+
+  svg {
+    path {
+      fill: $orange;
+    }
+  }
+
+  @include hover {
+    background-color: $orange;
+
+    svg path {
+      fill: $white;
+    }
+  }
+}

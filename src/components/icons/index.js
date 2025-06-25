@@ -1,0 +1,7 @@
+export { IconArrow } from './IconArrow'
+export { IconArrowRound } from './IconArrowRound'
+export { IconCart } from './IconCart'
+export { IconCartClear } from './IconCartClear'
+export { IconClose } from './IconClose'
+export { IconMinus } from './IconMinus'
+export { IconPlus } from './IconPlus'

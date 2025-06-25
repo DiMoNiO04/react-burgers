@@ -1,0 +1,8 @@
+.content {
+  margin: 70px 140px;
+}
+
+.cards {
+  @include flexColumn;
+  row-gap: 24px;
+}

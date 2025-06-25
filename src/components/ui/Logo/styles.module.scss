@@ -1,0 +1,24 @@
+.block {
+  @include flexCenterStart;
+  column-gap: 16px;
+}
+
+.logoImg {
+  @include sizes(80px, 80px);
+}
+
+.titles {
+  @include flexColumn;
+  row-gap: 4px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.desc {
+  font-size: 16px;
+  color: $gray;
+  font-style: italic;
+}

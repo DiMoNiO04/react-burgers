@@ -1,0 +1,12 @@
+.filter {
+  @include flexCenterBetween;
+  column-gap: 80px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.cards {
+  @include grid(4);
+  justify-content: space-between;
+  gap: 24px;
+}

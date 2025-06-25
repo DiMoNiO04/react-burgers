@@ -8,6 +8,7 @@ h1 {
   margin: 0;
   padding: 0;
   line-height: 120%;
+  color: $black;
 }
 
 html {
@@ -22,7 +23,7 @@ body {
   font-size: 16px;
   line-height: 120%;
   background-color: $background;
-  color: $white;
+  color: $black;
 
   &.--lock {
     overflow: hidden;
@@ -31,12 +32,6 @@ body {
 
 #root {
   @include flexColumn;
-  @include fullSize;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
   @include fullSize;
   min-height: 100vh;
 }

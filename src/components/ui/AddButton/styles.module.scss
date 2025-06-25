@@ -1,0 +1,60 @@
+.button {
+  @include flexCenterBetween;
+  column-gap: 8px;
+  border-radius: 30px;
+  background-color: $orange;
+  border: 1px solid $orange;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  span {
+    @include transition(color);
+    color: $white;
+    font-weight: 500;
+  }
+
+  svg path {
+    @include transition(fill);
+  }
+
+  &:hover {
+    background-color: transparent;
+    border-color: $orange;
+
+    span {
+      color: $orange;
+    }
+
+    svg path {
+      fill: $orange;
+    }
+
+    .count {
+      background-color: $orange;
+      color: $white;
+    }
+  }
+}
+
+.count {
+  display: inline-block;
+  border-radius: 30px;
+  background-color: $white;
+  color: $orange;
+  font-weight: 600;
+  width: 22px;
+  height: 22px;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 22px;
+  margin-left: 8px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
