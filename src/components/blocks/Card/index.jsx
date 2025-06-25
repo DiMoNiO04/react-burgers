@@ -1,9 +1,13 @@
 import clsx from 'clsx'
+import { useState } from 'react'
 
 import { AddButton } from '../../ui'
 import styles from './styles.module.scss'
 
 export const Card = () => {
+  const [countBurger, setCountBurger] = useState(0)
+  const onClickAddBtn = () => setCountBurger((countBurger) => countBurger + 1)
+
   return (
     <div className={styles.block}>
       <img className={styles.image} src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
@@ -23,7 +27,7 @@ export const Card = () => {
         <div className={styles.price}>
           от <span>395 ₽</span>
         </div>
-        <AddButton count={2} />
+        <AddButton count={countBurger} onClick={onClickAddBtn} />
       </div>
     </div>
   )
