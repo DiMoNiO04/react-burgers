@@ -1,5 +1,5 @@
-import { CartPageContent, MainPageContent } from './components/pages'
+import { MainPageContent } from './components/pages'
 
 export const App = () => {
-  return <CartPageContent />
+  return <MainPageContent />
 }
