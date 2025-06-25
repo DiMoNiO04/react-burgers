@@ -8,7 +8,7 @@ export const CardCart = () => {
         <img src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
       </div>
       <div className={styles.info}>
-        <h3>Сырный цыпленок</h3>
+        <h3>Острый цыпленок</h3>
         <p>тонкое тесто, 26 см.</p>
       </div>
       <div className={styles.count}>

@@ -16,7 +16,7 @@ export const Card = ({ imageUrl, title, sizes, types }) => {
   const handleBurgerSizeChange = (value) => setBurgerSize(value)
 
   const basePrice = sizes.find((size) => size.id === burgerSize)?.price || 0
-  const price = burgerType === CHEESE_TYPE ? basePrice + PRICE_CHEESE_TYPE : basePrice
+  const price = burgerType === CHEESE_TYPE ? Number((basePrice + PRICE_CHEESE_TYPE).toFixed(2)) : Number(basePrice.toFixed(2))
 
   return (
     <div className={styles.block}>

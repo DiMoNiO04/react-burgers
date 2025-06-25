@@ -12,7 +12,7 @@ export const BURGER_SIZES = [
 
 export const BURGER_TYPES = [
   { name: 'Классический', value: 0 },
-  { name: 'Сырный', value: 1 },
+  { name: 'Острый', value: 1 },
 ]
 
 export const BURGER_CATEGORIES = [
