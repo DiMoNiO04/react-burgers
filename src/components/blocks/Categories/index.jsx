@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { DATA_CATEGORIES } from '../../../data/categories'
+import { BURGER_CATEGORIES } from '../../../data'
 import styles from './styles.module.scss'
 
 export const Categories = () => {
@@ -12,7 +12,7 @@ export const Categories = () => {
   return (
     <div className={styles.block}>
       <ul className={styles.list}>
-        {DATA_CATEGORIES.map(({ value, name }, index) => (
+        {BURGER_CATEGORIES.map(({ value, name }, index) => (
           <li key={value}>
             <button
               type="button"

@@ -1,3 +1,4 @@
+import { DATA_BURGERS } from '../../../data'
 import { Card, Categories, Sort } from '../../blocks'
 import { Header, Wrapper } from '../../layouts'
 import { Title } from '../../ui'
@@ -14,14 +15,9 @@ export const MainPageContent = () => {
         </div>
         <Title title={'Все пиццы'} />
         <div className={styles.cards}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {DATA_BURGERS.map((burger) => (
+            <Card key={burger.id} {...burger} />
+          ))}
         </div>
       </main>
     </Wrapper>

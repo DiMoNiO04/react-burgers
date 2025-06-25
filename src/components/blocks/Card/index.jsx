@@ -1,33 +1,46 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
+import { BURGER_SIZES, BURGER_TYPES } from '../../../data/filters'
+import { CHEESE_TYPE, PRICE_CHEESE_TYPE } from '../../../utils/consts'
 import { AddButton } from '../../ui'
 import styles from './styles.module.scss'
 
-export const Card = () => {
-  const [countBurger, setCountBurger] = useState(0)
-  const onClickAddBtn = () => setCountBurger((countBurger) => countBurger + 1)
+export const Card = ({ imageUrl, title, sizes, types }) => {
+  const [count, setCount] = useState(0)
+  const [burgerType, setBurgerType] = useState(types[0] || 0)
+  const [burgerSize, setBurgerSize] = useState(sizes[0].id || 0)
+
+  const handleCountChange = () => setCount((prev) => prev + 1)
+  const handleBurgerTypeChange = (value) => setBurgerType(value)
+  const handleBurgerSizeChange = (value) => setBurgerSize(value)
+
+  const basePrice = sizes.find((size) => size.id === burgerSize)?.price || 0
+  const price = burgerType === CHEESE_TYPE ? basePrice + PRICE_CHEESE_TYPE : basePrice
 
   return (
     <div className={styles.block}>
-      <img className={styles.image} src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
-      <h3 className={styles.title}>Чикен Тар-Тар</h3>
+      <img className={styles.image} src={imageUrl} alt="" />
+      <h3 className={styles.title}>{title}</h3>
       <div className={styles.selector}>
         <ul className={styles.selectorList}>
-          <li className={clsx(styles.selectorItem, styles.selectorItemActive)}>тонкое</li>
-          <li className={styles.selectorItem}>традиционное</li>
+          {BURGER_TYPES.filter(({ value }) => types.includes(value)).map(({ value, name }) => (
+            <li key={value} className={clsx(styles.selectorItem, burgerType === value && styles.selectorItemActive)} onClick={() => handleBurgerTypeChange(value)}>
+              {name}
+            </li>
+          ))}
         </ul>
         <ul className={styles.selectorList}>
-          <li className={clsx(styles.selectorItem, styles.selectorItemActive)}>26 см.</li>
-          <li className={styles.selectorItem}>30 см.</li>
-          <li className={styles.selectorItem}>40 см.</li>
+          {BURGER_SIZES.map(({ name, value }) => (
+            <li key={value} className={clsx(styles.selectorItem, burgerSize === value && styles.selectorItemActive)} onClick={() => handleBurgerSizeChange(value)}>
+              {name}
+            </li>
+          ))}
         </ul>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.price}>
-          от <span>395 ₽</span>
-        </div>
-        <AddButton count={countBurger} onClick={onClickAddBtn} />
+        <div className={styles.price}>{price} BYN</div>
+        <AddButton count={count} onClick={handleCountChange} />
       </div>
     </div>
   )

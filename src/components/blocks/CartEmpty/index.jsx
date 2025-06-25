@@ -10,7 +10,7 @@ export const CartEmpty = () => {
         Для того, чтобы заказать бургер, перейди на главную страницу.
       </p>
       <div className={styles.img}>
-        <img src="/img/emptyCart.webp" alt="" />
+        <img src="img/emptyCart.webp" alt="" />
       </div>
       <a href="/" className={styles.btn}>
         Вернуться назад
