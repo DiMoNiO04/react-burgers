@@ -1,0 +1,50 @@
+.btn {
+  @include flexCenter;
+  @include sizes(60px, 60px);
+  @include transition(background-color);
+  border: 1px solid $orange;
+  background-color: $orange;
+  border-radius: 50%;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  transform: rotate(90deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  @include hover {
+    background-color: transparent;
+
+    svg path {
+      stroke: $orange;
+    }
+  }
+
+  svg {
+    @include sizes(16px, 16px);
+    
+    path {
+      @include transition(stroke);
+      stroke: $white;
+      stroke-width: 2px;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .btn {
+    @include sizes(48px, 48px);
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (max-width: $mob) {
+  .btn {
+      @include sizes(40px, 40px);
+      right: 8px;
+      bottom: 8px;
+
+      svg {
+        @include sizes(12px, 12px);
+      } }
+}
