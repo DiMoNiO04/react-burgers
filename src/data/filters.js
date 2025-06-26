@@ -1,7 +1,8 @@
 export const SORT_OPTIONS = [
-  { value: 0, name: 'популярности' },
-  { value: 1, name: 'цене' },
-  { value: 2, name: 'алфавиту' },
+  { name: 'алфавиту (ASC)', value: '-title' },
+  { name: 'алфавиту (DESC)', value: 'title' },
+  { name: 'популярности (ASC)', value: '-rating' },
+  { name: 'популярности (DESC)', value: 'rating' },
 ]
 
 export const BURGER_SIZES = [

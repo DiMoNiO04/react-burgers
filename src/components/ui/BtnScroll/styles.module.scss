@@ -10,7 +10,7 @@
   bottom: 40px;
   transform: rotate(90deg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  
+
   @include hover {
     background-color: transparent;
 
@@ -21,7 +21,7 @@
 
   svg {
     @include sizes(16px, 16px);
-    
+
     path {
       @include transition(stroke);
       stroke: $white;
@@ -40,11 +40,12 @@
 
 @media (max-width: $mob) {
   .btn {
-      @include sizes(40px, 40px);
-      right: 8px;
-      bottom: 8px;
+    @include sizes(40px, 40px);
+    right: 8px;
+    bottom: 8px;
 
-      svg {
-        @include sizes(12px, 12px);
-      } }
+    svg {
+      @include sizes(12px, 12px);
+    }
+  }
 }
