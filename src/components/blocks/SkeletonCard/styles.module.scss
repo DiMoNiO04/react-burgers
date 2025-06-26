@@ -1,0 +1,14 @@
+.block {
+  min-width: 280px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid $background;
+  box-sizing: border-box;
+  @include flexCenter;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+}
