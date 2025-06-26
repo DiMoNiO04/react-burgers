@@ -7,7 +7,7 @@ export const ProviderRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={URLS.MAIN} element={<MainPage />} />
+        <Route path={URLS.MAIN} element={<MainPage />} index />
         <Route path={URLS.CART} element={<CartPage />} />
       </Routes>
     </BrowserRouter>
