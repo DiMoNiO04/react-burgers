@@ -1,4 +1,5 @@
 export { AddButton } from './AddButton'
+export { BtnBack } from './BtnBack'
 export { HeaderCart } from './HeaderCart'
 export { Logo } from './Logo'
 export { Title } from './Title'

@@ -18,22 +18,3 @@
 .img {
   @include sizes(300px, auto);
 }
-
-.btn {
-  padding: 12px 0 14px;
-  width: 230px;
-  margin: 0 auto;
-  font-weight: 600;
-  font-size: 18px;
-  background-color: $black;
-  display: inline-block;
-  border-radius: 30px;
-  min-width: 100px;
-  text-align: center;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
-  border: 1px solid transparent;
-  user-select: none;
-}

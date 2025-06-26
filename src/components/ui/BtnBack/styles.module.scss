@@ -1,0 +1,19 @@
+.btn {
+  @include flexCenter;
+  column-gap: 12px;
+  border: 1px solid $black;
+  border-radius: 30px;
+  padding: 16px;
+  font-weight: 600;
+  width: 210px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+  color: $black;
+
+  @include hover {
+    border-color: $black;
+    background-color: $black;
+    color: $white;
+  }
+}

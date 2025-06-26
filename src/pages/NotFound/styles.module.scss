@@ -1,0 +1,53 @@
+.content {
+  @include flexColumn;
+  align-items: center;
+  justify-content: center;
+  row-gap: 12px;
+  margin: 70px 140px;
+}
+
+.notFound {
+  font-size: 40px;
+}
+
+.title {
+  font-size: 56px;
+}
+
+.desc {
+  color: $gray;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.btns {
+  @include flexCenter;
+  column-gap: 40px;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: $orange;
+  border-radius: 30px;
+  border: 1px solid $orange;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  width: 210px;
+  padding: 16px;
+  color: $white;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  @include hover {
+    background-color: transparent;
+    color: $orange;
+  }
+}
