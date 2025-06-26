@@ -1,3 +1,6 @@
+import { Link } from 'react-router'
+
+import { URLS } from '../../../utils/urls'
 import { Title } from '../../ui'
 import styles from './styles.module.scss'
 
@@ -12,9 +15,9 @@ export const CartEmpty = () => {
       <div className={styles.img}>
         <img src="img/emptyCart.webp" alt="" />
       </div>
-      <a href="/" className={styles.btn}>
+      <Link to={URLS.MAIN} className={styles.btn}>
         Вернуться назад
-      </a>
+      </Link>
     </div>
   )
 }

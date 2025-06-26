@@ -1,9 +1,8 @@
-import { CardCart, CartBottom, CartEmpty } from '../../blocks'
-import { CartHeader } from '../../blocks/CartHeader'
-import { Header, Wrapper } from '../../layouts'
+import { CardCart, CartEmpty, CartHeader } from '../../components/blocks'
+import { Header, Wrapper } from '../../components/layouts'
 import styles from './styles.module.scss'
 
-export const CartPageContent = () => {
+export const CartPage = () => {
   const isEmpty = true
 
   return (

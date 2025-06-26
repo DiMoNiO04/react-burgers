@@ -1,5 +1,5 @@
-import { MainPageContent } from './components/pages'
+import { ProviderRouter } from './providers'
 
 export const App = () => {
-  return <MainPageContent />
+  return <ProviderRouter />
 }

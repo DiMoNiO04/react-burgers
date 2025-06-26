@@ -1,3 +1,6 @@
+import { Link } from 'react-router'
+
+import { URLS } from '../../../utils/urls'
 import { IconArrowRound } from '../../icons'
 import styles from './styles.module.scss'
 
@@ -13,10 +16,10 @@ export const CartBottom = () => {
         </div>
       </div>
       <div className={styles.btns}>
-        <a href="/" className={styles.btnBack}>
+        <Link to={URLS.MAIN} className={styles.btnBack}>
           <IconArrowRound />
           <span>Вернуться назад</span>
-        </a>
+        </Link>
         <button type="button" className={styles.btn}>
           Оплатить сейчас
         </button>

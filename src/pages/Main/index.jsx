@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 
-import { API_URL_BURGERS } from '../../../utils/consts'
-import { Card, Categories, SkeletonCard, Sort } from '../../blocks'
-import { Header, Wrapper } from '../../layouts'
-import { Title } from '../../ui'
+import { Card, Categories, SkeletonCard, Sort } from '../../components/blocks'
+import { Header, Wrapper } from '../../components/layouts'
+import { Title } from '../../components/ui'
+import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
-export const MainPageContent = () => {
+export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
