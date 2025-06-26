@@ -4,14 +4,15 @@
   justify-content: center;
   row-gap: 12px;
   margin: 70px 140px;
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
 }
 
 .notFound {
   font-size: 40px;
-}
-
-.title {
-  font-size: 56px;
 }
 
 .desc {
@@ -49,5 +50,53 @@
   @include hover {
     background-color: transparent;
     color: $orange;
+  }
+}
+
+@media (max-width: $laptop) {
+  .content {
+    margin: 0;
+  }
+}
+
+@media (max-width: $tablet) {
+  .notFound {
+    font-size: 32px;
+  }
+
+  .desc {
+    font-size: 18px;
+  }
+
+  .btns {
+    @include flexCenter;
+    column-gap: 32px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: $mob) {
+  .content {
+    row-gap: 8px;
+  }
+
+  .notFound {
+    font-size: 24px;
+  }
+
+  .desc {
+    font-size: 16px;
+  }
+
+  .btns {
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    min-width: 100%;
+    width: 100%;
+    font-weight: 400;
   }
 }

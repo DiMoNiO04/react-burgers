@@ -5,6 +5,7 @@
 
 .logoImg {
   @include sizes(80px, 80px);
+  flex-shrink: 0;
 }
 
 .titles {
@@ -21,4 +22,18 @@
   font-size: 16px;
   color: $gray;
   font-style: italic;
+}
+
+@media (max-width: $mob) {
+  .title {
+    font-size: 24px;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+
+  .logoImg {
+    @include sizes(64px, 64px);
+  }
 }

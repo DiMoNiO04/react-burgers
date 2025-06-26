@@ -10,3 +10,33 @@
   justify-content: space-between;
   gap: 24px;
 }
+
+@media (max-width: $laptop) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: $tablet) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .filter {
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: $mob) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+
+  .filter {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+}

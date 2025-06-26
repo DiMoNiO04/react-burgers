@@ -3,3 +3,11 @@
   @include flexCenterBetween;
   padding-bottom: 24px;
 }
+
+@media (max-width: $mob) {
+  .header {
+    padding-bottom: 20px;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+}

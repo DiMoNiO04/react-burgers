@@ -4,12 +4,14 @@ import styles from './styles.module.scss'
 export const CardCart = () => {
   return (
     <div className={styles.card}>
-      <div className={styles.img}>
-        <img src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
-      </div>
-      <div className={styles.info}>
-        <h3>Острый цыпленок</h3>
-        <p>тонкое тесто, 26 см.</p>
+      <div className={styles.mainInfo}>
+        <div className={styles.img}>
+          <img src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
+        </div>
+        <div className={styles.info}>
+          <h3>Острый цыпленок</h3>
+          <p>тонкое тесто, 26 см.</p>
+        </div>
       </div>
       <div className={styles.count}>
         <button type="button" className={styles.countBtn}>

@@ -4,3 +4,17 @@
   font-weight: 700;
   margin-bottom: 24px;
 }
+
+@media (max-width: $tablet) {
+  .title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: $mob) {
+  .title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+}

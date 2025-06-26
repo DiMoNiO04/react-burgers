@@ -47,3 +47,9 @@
   @include transition(color);
   color: $white;
 }
+
+@media (max-width: $mob) {
+  .block {
+    padding: 8px 16px;
+  }
+}

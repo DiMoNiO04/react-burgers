@@ -1,6 +1,6 @@
 .card {
   display: grid;
-  grid-template-columns: 0.5fr 3fr 1fr 2fr 1fr;
+  grid-template-columns: 3.5fr 1fr 2fr 1fr;
   align-items: center;
   gap: 20px;
   width: 100%;
@@ -8,14 +8,17 @@
   padding-top: 24px;
 }
 
+.mainInfo {
+  @include flexColumn;
+  row-gap: 8px;
+}
+
 .img {
   @include flexCenter;
   @include sizes(100px, 100px);
 
   img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    @include fullSize;
   }
 }
 
@@ -40,7 +43,7 @@
 
 .count {
   @include flexCenterBetween;
-  column-gap: 8px;
+  column-gap: 16px;
 
   b {
     font-size: 22px;
@@ -111,5 +114,39 @@
     svg path {
       fill: $white;
     }
+  }
+}
+
+@media (max-width: $mob) {
+  .card {
+    grid-template-columns: 1fr;
+    column-gap: 12px;
+    align-items: center;
+    position: relative;
+  }
+
+  .mainInfo {
+    @include flexCenter;
+    flex-direction: column;
+  }
+
+  .count {
+    column-gap: 24px;
+    justify-content: center;
+    order: 1;
+  }
+
+  .remove {
+    position: absolute;
+    right: 0;
+    top: 16px;
+  }
+
+  .btnRemove {
+    @include sizes(32px, 32px);
+  }
+
+  .img {
+    @include sizes(200px, 200px);
   }
 }

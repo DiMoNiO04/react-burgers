@@ -17,3 +17,12 @@
     color: $white;
   }
 }
+
+@media (max-width: $mob) {
+  .btn {
+    padding: 8px 16px;
+    min-width: 100%;
+    width: 100%;
+    font-weight: 400;
+  }
+}

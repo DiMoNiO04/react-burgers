@@ -1,9 +1,9 @@
-import { CardCart, CartEmpty, CartHeader } from '../../components/blocks'
+import { CardCart, CartBottom, CartEmpty, CartHeader } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import styles from './styles.module.scss'
 
 export const CartPage = () => {
-  const isEmpty = true
+  const isEmpty = false
 
   return (
     <Layout>

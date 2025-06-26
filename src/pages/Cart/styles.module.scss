@@ -6,3 +6,21 @@
   @include flexColumn;
   row-gap: 24px;
 }
+
+@media (max-width: $laptop) {
+  .content {
+    margin: 0;
+  }
+}
+
+@media (max-width: $tablet) {
+  .cards {
+    row-gap: 20px;
+  }
+}
+
+@media (max-width: $mob) {
+  .cards {
+    row-gap: 16px;
+  }
+}

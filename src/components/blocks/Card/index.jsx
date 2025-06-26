@@ -30,7 +30,7 @@ export const Card = ({ imageUrl, title, sizes, types }) => {
             </li>
           ))}
         </ul>
-        <ul className={styles.selectorList}>
+        <ul className={clsx(styles.selectorList, styles.selectorListSizes)}>
           {BURGER_SIZES.map(({ name, value }) => (
             <li key={value} className={clsx(styles.selectorItem, burgerSize === value && styles.selectorItemActive)} onClick={() => handleBurgerSizeChange(value)}>
               {name}

@@ -5,6 +5,7 @@
   justify-content: center;
 
   h1 {
+    text-align: center;
     margin: 0;
   }
 }
@@ -17,4 +18,32 @@
 
 .img {
   @include sizes(300px, auto);
+}
+
+@media (max-width: $tablet) {
+  .block {
+    row-gap: 20px;
+  }
+
+  .desc {
+    font-size: 16px;
+  }
+
+  .img {
+    @include sizes(240px, auto);
+  }
+}
+
+@media (max-width: $mob) {
+  .block {
+    row-gap: 16px;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+
+  .img {
+    @include sizes(180px, auto);
+  }
 }
