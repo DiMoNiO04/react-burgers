@@ -3,9 +3,8 @@ import { useContext, useEffect, useState } from 'react'
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
-import { CategoryContext, SortContext } from '../../context'
+import { CategoryContext, PaginationContext, SortContext } from '../../context'
 import { SearchContext } from '../../context/SearchContext'
-import { SORT_OPTIONS } from '../../data'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -13,16 +12,12 @@ export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const [currentPage, setCurrentPage] = useState(1)
-
   const { search } = useContext(SearchContext)
   const { sort } = useContext(SortContext)
   const { category } = useContext(CategoryContext)
-
-  const handleChangeCurrentPage = (event) => setCurrentPage(event.selected + 1)
+  const { page } = useContext(PaginationContext)
 
   useEffect(() => {
-    console.log(sort)
     setIsLoading(true)
 
     const categoryValue = category > 0 ? `&category=${category}` : ''
@@ -30,7 +25,7 @@ export const MainPage = () => {
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
     const searchValue = search ? `&search=${search}` : ''
 
-    fetch(`${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
+    fetch(`${API_URL_BURGERS}?limit=8&page=${page}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
       .then((res) => res.json())
       .then((data) => {
         setBurgers(data)
@@ -38,7 +33,7 @@ export const MainPage = () => {
       })
 
     window.scrollTo(0, 0)
-  }, [category, sort, search, currentPage])
+  }, [category, sort, search, page])
 
   const skeletonPizzas = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
   const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
@@ -51,7 +46,7 @@ export const MainPage = () => {
       </div>
       <Title title={'Все пиццы'} />
       <div className={styles.cards}>{isLoading ? skeletonPizzas : burgerCards}</div>
-      <Pagination currentPage={currentPage} onChangePage={handleChangeCurrentPage} />
+      <Pagination />
     </Layout>
   )
 }

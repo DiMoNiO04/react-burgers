@@ -1,20 +1,26 @@
+import { useContext } from 'react'
 import ReactPaginate from 'react-paginate'
 
+import { PaginationContext } from '../../../context'
 import styles from './styles.module.scss'
 
-export const Pagination = ({ onChangePage, currentPage }) => {
+export const Pagination = () => {
+  const { page, setPage } = useContext(PaginationContext)
+
+  const handleChangeCurrentPage = (event) => setPage(event.selected + 1)
+
   return (
     <div>
       <ReactPaginate
         className={styles.pagination}
         breakLabel="..."
         nextLabel=">"
-        onPageChange={onChangePage}
+        onPageChange={handleChangeCurrentPage}
         pageRangeDisplayed={8}
         pageCount={3}
         previousLabel="<"
         renderOnZeroPageCount={null}
-        forcePage={currentPage - 1}
+        forcePage={page - 1}
       />
     </div>
   )

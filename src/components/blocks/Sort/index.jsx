@@ -1,19 +1,21 @@
 import clsx from 'clsx'
 import { useContext, useState } from 'react'
 
-import { SortContext } from '../../../context'
+import { PaginationContext, SortContext } from '../../../context'
 import { SORT_OPTIONS } from '../../../data'
 import { IconArrow } from '../../icons'
 import styles from './styles.module.scss'
 
 export const Sort = () => {
   const { sort, setSort } = useContext(SortContext)
+  const { setPage } = useContext(PaginationContext)
 
   const [isOpenSort, setIsOpenSort] = useState(false)
 
   const toggleOpenSort = () => setIsOpenSort((prev) => !prev)
 
   const onClickSort = (value) => {
+    setPage(1)
     setSort(value)
     toggleOpenSort()
   }
