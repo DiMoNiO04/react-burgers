@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
+import { SearchContext } from '../../context/SearchContext'
 import { SORT_OPTIONS } from '../../data'
+import { ProviderSearch } from '../../providers'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -13,8 +15,8 @@ export const MainPage = () => {
 
   const [category, setCategory] = useState(0)
   const [sort, setSort] = useState(SORT_OPTIONS[0])
-  const [search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
+  const { search } = useContext(SearchContext)
 
   const handleChangeCategory = (value) => {
     setCurrentPage(1)
@@ -48,7 +50,7 @@ export const MainPage = () => {
   const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
 
   return (
-    <Layout searchValue={search} setSearchValue={setSearch}>
+    <Layout>
       <div className={styles.filter}>
         <Categories valueCategory={category} onChangeCategory={handleChangeCategory} />
         <Sort valueSort={sort} onChangeSort={handleChangeSort} />

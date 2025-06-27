@@ -1,5 +1,9 @@
-import { ProviderRouter } from './providers'
+import { ProviderRouter, ProviderSearch } from './providers'
 
 export const App = () => {
-  return <ProviderRouter />
+  return (
+    <ProviderSearch>
+      <ProviderRouter />
+    </ProviderSearch>
+  )
 }
