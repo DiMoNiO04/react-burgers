@@ -13,6 +13,7 @@ export const MainPage = () => {
 
   const [category, setCategory] = useState(0)
   const [sort, setSort] = useState(SORT_OPTIONS[0])
+  const [search, setSearch] = useState('')
 
   const handleChangeCategory = (value) => setCategory(value)
   const handleChangeSort = (value) => setSort(value)
@@ -23,8 +24,9 @@ export const MainPage = () => {
     const categoryValue = category > 0 ? `category=${category}` : ''
     const sortByValue = sort.value.replace('-', '')
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
+    const searchValue = search ? `&search=${search}` : ''
 
-    fetch(`${API_URL_BURGERS}?${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}`)
+    fetch(`${API_URL_BURGERS}?${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
       .then((res) => res.json())
       .then((data) => {
         setBurgers(data)
@@ -32,18 +34,19 @@ export const MainPage = () => {
       })
 
     window.scrollTo(0, 0)
-  }, [category, sort])
+  }, [category, sort, search])
+
+  const skeletonPizzas = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
+  const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
 
   return (
-    <Layout>
+    <Layout searchValue={search} setSearchValue={setSearch}>
       <div className={styles.filter}>
         <Categories valueCategory={category} onChangeCategory={handleChangeCategory} />
         <Sort valueSort={sort} onChangeSort={handleChangeSort} />
       </div>
       <Title title={'Все пиццы'} />
-      <div className={styles.cards}>
-        {isLoading ? [...new Array(8)].map((_, index) => <SkeletonCard key={index} />) : burgers.map((burger) => <Card key={burger.id} {...burger} />)}
-      </div>
+      <div className={styles.cards}>{isLoading ? skeletonPizzas : burgerCards}</div>
     </Layout>
   )
 }

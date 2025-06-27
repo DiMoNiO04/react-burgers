@@ -2,10 +2,12 @@ import { BtnScroll } from '../../ui'
 import { Header } from '../Header'
 import { Wrapper } from '../Wrapper'
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, searchValue, setSearchValue }) => {
+  const isMainPage = !window.location.pathname.slice(1)
+
   return (
     <Wrapper>
-      <Header />
+      <Header isMainPage={isMainPage} searchValue={searchValue} setSearchValue={setSearchValue} />
       <main>
         {children}
         <BtnScroll />

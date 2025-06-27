@@ -1,7 +1,7 @@
 export const IconCartClear = () => {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2.5 5H4.16667H17.5" stroke="#b6b6b6" stroke-width="1.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2.5 5H4.16667H17.5" stroke="#b6b6b6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
       <path
         d="
           M6.66663 5.00001V3.33334C6.66663 2.89131 6.84222 2.46739 7.15478 2.15483C7.46734 1.84227 7.89127 1.66667 8.33329 1.66667H11.6666C12.1087 1.66667 12.5326 1.84227 
