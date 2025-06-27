@@ -11,7 +11,7 @@ export const Logo = () => {
       </div>
       <div className={styles.titles}>
         <h1 className={styles.title}>Burgly</h1>
-        <span className={styles.desc}>самые вкусные бургеры во вселенной</span>
+        <span className={styles.desc}>самые вкусные бургеры</span>
       </div>
     </Link>
   )

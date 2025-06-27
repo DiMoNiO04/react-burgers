@@ -1,6 +1,7 @@
 .block {
   @include flexCenterStart;
   column-gap: 16px;
+  flex-shrink: 0;
 }
 
 .logoImg {

@@ -5,6 +5,7 @@
   background-color: $orange;
   border: 1px solid $orange;
   transition: background-color 0.2s ease;
+  flex-shrink: 0;
 
   svg path {
     @include transition(stroke);
@@ -51,5 +52,12 @@
 @media (max-width: $mob) {
   .block {
     padding: 8px 16px;
+    width: 100%;
+  }
+
+  .price,
+  .cartBlock {
+    width: 100%;
+    text-align: center;
   }
 }

@@ -1,0 +1,54 @@
+.block {
+  @include flexCenterBetween;
+  @include transition(border-color);
+  column-gap: 12px;
+  border-radius: 8px;
+  border: 1.2px solid $gray;
+  padding: 8px 12px;
+  max-width: 600px;
+  width: 100%;
+
+  &:focus-within {
+    border-color: $black;
+  }
+}
+
+.iconSearch,
+.btnClear {
+  flex-shrink: 0;
+  @include sizes(20px, 20px);
+
+  svg {
+    path {
+      fill: $gray;
+    }
+  }
+}
+
+.btnClear {
+  svg {
+    @include sizes(16px, 16px);
+  }
+
+  @include hover {
+    svg path {
+      fill: $black;
+    }
+  }
+
+  svg path {
+    @include transition(fill);
+  }
+}
+
+.input {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (max-width: $mob) {
+  .block {
+    max-width: 100%;
+  }
+}
