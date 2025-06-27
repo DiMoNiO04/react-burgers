@@ -3,9 +3,9 @@ import { useContext, useEffect, useState } from 'react'
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
+import { SortContext } from '../../context'
 import { SearchContext } from '../../context/SearchContext'
 import { SORT_OPTIONS } from '../../data'
-import { ProviderSearch } from '../../providers'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -14,21 +14,19 @@ export const MainPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const [category, setCategory] = useState(0)
-  const [sort, setSort] = useState(SORT_OPTIONS[0])
   const [currentPage, setCurrentPage] = useState(1)
+
   const { search } = useContext(SearchContext)
+  const { sort } = useContext(SortContext)
 
   const handleChangeCategory = (value) => {
     setCurrentPage(1)
     setCategory(value)
   }
-  const handleChangeSort = (value) => {
-    setCurrentPage(1)
-    setSort(value)
-  }
   const handleChangeCurrentPage = (event) => setCurrentPage(event.selected + 1)
 
   useEffect(() => {
+    console.log(sort)
     setIsLoading(true)
 
     const categoryValue = category > 0 ? `&category=${category}` : ''
@@ -53,7 +51,7 @@ export const MainPage = () => {
     <Layout>
       <div className={styles.filter}>
         <Categories valueCategory={category} onChangeCategory={handleChangeCategory} />
-        <Sort valueSort={sort} onChangeSort={handleChangeSort} />
+        <Sort />
       </div>
       <Title title={'Все пиццы'} />
       <div className={styles.cards}>{isLoading ? skeletonPizzas : burgerCards}</div>

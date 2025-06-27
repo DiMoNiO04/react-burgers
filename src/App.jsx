@@ -1,9 +1,11 @@
-import { ProviderRouter, ProviderSearch } from './providers'
+import { ProviderRouter, ProviderSearch, ProviderSort } from './providers'
 
 export const App = () => {
   return (
-    <ProviderSearch>
-      <ProviderRouter />
-    </ProviderSearch>
+    <ProviderSort>
+      <ProviderSearch>
+        <ProviderRouter />
+      </ProviderSearch>
+    </ProviderSort>
   )
 }

@@ -1,17 +1,20 @@
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
+import { SortContext } from '../../../context'
 import { SORT_OPTIONS } from '../../../data'
 import { IconArrow } from '../../icons'
 import styles from './styles.module.scss'
 
-export const Sort = ({ valueSort, onChangeSort }) => {
+export const Sort = () => {
+  const { sort, setSort } = useContext(SortContext)
+
   const [isOpenSort, setIsOpenSort] = useState(false)
 
   const toggleOpenSort = () => setIsOpenSort((prev) => !prev)
 
   const onClickSort = (value) => {
-    onChangeSort(value)
+    setSort(value)
     toggleOpenSort()
   }
 
@@ -20,7 +23,7 @@ export const Sort = ({ valueSort, onChangeSort }) => {
       <button type="button" className={clsx(styles.label, isOpenSort && styles.labelOpen)} onClick={toggleOpenSort}>
         <IconArrow />
         <b>Сортировать по:</b>
-        <span>{valueSort.name}</span>
+        <span>{sort.name}</span>
       </button>
 
       {isOpenSort && (
@@ -28,7 +31,7 @@ export const Sort = ({ valueSort, onChangeSort }) => {
           <ul className={styles.popupList}>
             {SORT_OPTIONS.map((item) => (
               <li key={item.value}>
-                <button type="button" className={clsx(styles.popupItem, item.value === valueSort.value && styles.itemActive)} onClick={() => onClickSort(item)}>
+                <button type="button" className={clsx(styles.popupItem, item.value === sort.value && styles.itemActive)} onClick={() => onClickSort(item)}>
                   {item.name}
                 </button>
               </li>
