@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
-import { SortContext } from '../../context'
+import { CategoryContext, SortContext } from '../../context'
 import { SearchContext } from '../../context/SearchContext'
 import { SORT_OPTIONS } from '../../data'
 import { API_URL_BURGERS } from '../../utils/consts'
@@ -13,16 +13,12 @@ export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const [category, setCategory] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
   const { search } = useContext(SearchContext)
   const { sort } = useContext(SortContext)
+  const { category } = useContext(CategoryContext)
 
-  const handleChangeCategory = (value) => {
-    setCurrentPage(1)
-    setCategory(value)
-  }
   const handleChangeCurrentPage = (event) => setCurrentPage(event.selected + 1)
 
   useEffect(() => {
@@ -50,7 +46,7 @@ export const MainPage = () => {
   return (
     <Layout>
       <div className={styles.filter}>
-        <Categories valueCategory={category} onChangeCategory={handleChangeCategory} />
+        <Categories />
         <Sort />
       </div>
       <Title title={'Все пиццы'} />

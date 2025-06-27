@@ -1,5 +1,8 @@
 import { createContext } from 'react'
 
-import { SORT_OPTIONS } from '../data'
+const defaultValues = {
+  sort: '',
+  setSort: () => {},
+}
 
-export const SortContext = createContext(SORT_OPTIONS[0])
+export const SortContext = createContext(defaultValues)
