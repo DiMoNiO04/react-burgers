@@ -3,8 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
-import { CategoryContext, PaginationContext, SortContext } from '../../context'
-import { SearchContext } from '../../context/SearchContext'
+import { ContextCategory, ContextPagination, ContextSearch, ContextSort } from '../../context'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -12,10 +11,10 @@ export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const { search } = useContext(SearchContext)
-  const { sort } = useContext(SortContext)
-  const { category } = useContext(CategoryContext)
-  const { page } = useContext(PaginationContext)
+  const { search } = useContext(ContextSearch)
+  const { sort } = useContext(ContextSort)
+  const { category } = useContext(ContextCategory)
+  const { page } = useContext(ContextPagination)
 
   useEffect(() => {
     setIsLoading(true)

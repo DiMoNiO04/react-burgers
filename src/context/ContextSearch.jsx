@@ -5,4 +5,4 @@ const defaultValues = {
   setSearch: () => {},
 }
 
-export const SearchContext = createContext(defaultValues)
+export const ContextSearch = createContext(defaultValues)

@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 import { useContext } from 'react'
 
-import { CategoryContext, PaginationContext } from '../../../context'
+import { ContextCategory, ContextPagination } from '../../../context'
 import { BURGER_CATEGORIES } from '../../../data'
 import styles from './styles.module.scss'
 
 export const Categories = () => {
-  const { category, setCategory } = useContext(CategoryContext)
-  const { setPage } = useContext(PaginationContext)
+  const { category, setCategory } = useContext(ContextCategory)
+  const { setPage } = useContext(ContextPagination)
 
   const onChangeCategory = (value) => {
     setPage(1)

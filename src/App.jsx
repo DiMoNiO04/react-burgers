@@ -1,15 +1,9 @@
-import { ProviderCategory, ProviderPagination, ProviderRouter, ProviderSearch, ProviderSort } from './providers'
+import { ProviderContexts, ProviderRouter } from './providers'
 
 export const App = () => {
   return (
-    <ProviderPagination>
-      <ProviderCategory>
-        <ProviderSort>
-          <ProviderSearch>
-            <ProviderRouter />
-          </ProviderSearch>
-        </ProviderSort>
-      </ProviderCategory>
-    </ProviderPagination>
+    <ProviderContexts>
+      <ProviderRouter />
+    </ProviderContexts>
   )
 }

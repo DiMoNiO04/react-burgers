@@ -5,4 +5,4 @@ const defaultValues = {
   setSort: () => {},
 }
 
-export const SortContext = createContext(defaultValues)
+export const ContextSort = createContext(defaultValues)

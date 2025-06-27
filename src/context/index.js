@@ -1,4 +1,4 @@
-export { CategoryContext } from './CategoryContext'
-export { PaginationContext } from './PaginationContext'
-export { SearchContext } from './SearchContext'
-export { SortContext } from './SortContext'
+export { ContextCategory } from './ContextCategory'
+export { ContextPagination } from './ContextPagination'
+export { ContextSearch } from './ContextSearch'
+export { ContextSort } from './ContextSort'

@@ -5,4 +5,4 @@ const defaultValues = {
   setCategory: () => {},
 }
 
-export const CategoryContext = createContext(defaultValues)
+export const ContextCategory = createContext(defaultValues)

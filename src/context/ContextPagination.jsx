@@ -5,4 +5,4 @@ const defaultValues = {
   setPage: () => {},
 }
 
-export const PaginationContext = createContext(defaultValues)
+export const ContextPagination = createContext(defaultValues)

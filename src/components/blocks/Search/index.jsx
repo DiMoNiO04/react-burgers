@@ -1,13 +1,18 @@
 import { useContext } from 'react'
 
-import { SearchContext } from '../../../context/SearchContext'
+import { ContextPagination } from '../../../context'
+import { ContextSearch } from '../../../context/ContextSearch'
 import { IconClose, IconSearch } from '../../icons'
 import styles from './styles.module.scss'
 
 export const Search = () => {
-  const { search, setSearch } = useContext(SearchContext)
+  const { search, setSearch } = useContext(ContextSearch)
+  const { setPage } = useContext(ContextPagination)
 
-  const onChangeSearch = (e) => setSearch(e.target.value)
+  const onChangeSearch = (e) => {
+    setPage(1)
+    setSearch(e.target.value)
+  }
   const onClearSearch = () => setSearch('')
 
   return (

@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import ReactPaginate from 'react-paginate'
 
-import { PaginationContext } from '../../../context'
+import { ContextPagination } from '../../../context'
 import styles from './styles.module.scss'
 
 export const Pagination = () => {
-  const { page, setPage } = useContext(PaginationContext)
+  const { page, setPage } = useContext(ContextPagination)
 
   const handleChangeCurrentPage = (event) => setPage(event.selected + 1)
 
