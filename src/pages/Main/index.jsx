@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Card, Categories, SkeletonCard, Sort } from '../../components/blocks'
+import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
 import { SORT_OPTIONS } from '../../data'
@@ -14,19 +14,27 @@ export const MainPage = () => {
   const [category, setCategory] = useState(0)
   const [sort, setSort] = useState(SORT_OPTIONS[0])
   const [search, setSearch] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const handleChangeCategory = (value) => setCategory(value)
-  const handleChangeSort = (value) => setSort(value)
+  const handleChangeCategory = (value) => {
+    setCurrentPage(1)
+    setCategory(value)
+  }
+  const handleChangeSort = (value) => {
+    setCurrentPage(1)
+    setSort(value)
+  }
+  const handleChangeCurrentPage = (event) => setCurrentPage(event.selected + 1)
 
   useEffect(() => {
     setIsLoading(true)
 
-    const categoryValue = category > 0 ? `category=${category}` : ''
+    const categoryValue = category > 0 ? `&category=${category}` : ''
     const sortByValue = sort.value.replace('-', '')
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
     const searchValue = search ? `&search=${search}` : ''
 
-    fetch(`${API_URL_BURGERS}?${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
+    fetch(`${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
       .then((res) => res.json())
       .then((data) => {
         setBurgers(data)
@@ -34,7 +42,7 @@ export const MainPage = () => {
       })
 
     window.scrollTo(0, 0)
-  }, [category, sort, search])
+  }, [category, sort, search, currentPage])
 
   const skeletonPizzas = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
   const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
@@ -47,6 +55,7 @@ export const MainPage = () => {
       </div>
       <Title title={'Все пиццы'} />
       <div className={styles.cards}>{isLoading ? skeletonPizzas : burgerCards}</div>
+      <Pagination currentPage={currentPage} onChangePage={handleChangeCurrentPage} />
     </Layout>
   )
 }

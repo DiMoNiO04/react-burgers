@@ -1,0 +1,43 @@
+.pagination {
+  @include flexCenterStart;
+  column-gap: 12px;
+
+  li {
+    a {
+      @include sizes(48px, 48px);
+      text-align: center;
+      line-height: 42px;
+      border: 1px solid $orange;
+      border-radius: 50%;
+      display: inline-block;
+      color: $orange;
+      cursor: pointer;
+    }
+  }
+
+  :global {
+    .selected {
+      a {
+        background-color: $orange;
+        color: $white;
+      }
+    }
+
+    .disabled {
+      opacity: 0.5;
+
+      a {
+        cursor: not-allowed;
+      }
+    }
+
+    :not(.disabled) {
+      a {
+        @include hover {
+          background-color: $orange;
+          color: $white;
+        }
+      }
+    }
+  }
+}
