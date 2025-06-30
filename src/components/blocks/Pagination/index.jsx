@@ -1,13 +1,15 @@
-import { useContext } from 'react'
 import ReactPaginate from 'react-paginate'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { ContextPagination } from '../../../context'
+import { setCurrentPage } from '../../../store/filter/slice'
 import styles from './styles.module.scss'
 
 export const Pagination = () => {
-  const { page, setPage } = useContext(ContextPagination)
+  const dispatch = useDispatch()
 
-  const handleChangeCurrentPage = (event) => setPage(event.selected + 1)
+  const { currentPage } = useSelector((state) => state.filter)
+
+  const handleChangeCurrentPage = (event) => dispatch(setCurrentPage(event.selected + 1))
 
   return (
     <div>
@@ -20,7 +22,7 @@ export const Pagination = () => {
         pageCount={3}
         previousLabel="<"
         renderOnZeroPageCount={null}
-        forcePage={page - 1}
+        forcePage={currentPage - 1}
       />
     </div>
   )

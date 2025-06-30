@@ -1,17 +1,14 @@
 import clsx from 'clsx'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { ContextPagination } from '../../../context'
 import { SORT_OPTIONS } from '../../../data'
-import { setSort } from '../../../store/filter/slice'
+import { setCurrentPage, setSort } from '../../../store/filter/slice'
 import { IconArrow } from '../../icons'
 import styles from './styles.module.scss'
 
 export const Sort = () => {
   const dispatch = useDispatch()
-
-  const { setPage } = useContext(ContextPagination)
 
   const [isOpenSort, setIsOpenSort] = useState(false)
 
@@ -20,7 +17,7 @@ export const Sort = () => {
   const { sort } = useSelector((state) => state.filter)
 
   const onClickSort = (value) => {
-    setPage(1)
+    dispatch(setCurrentPage(1))
     dispatch(setSort(value))
     toggleOpenSort()
   }

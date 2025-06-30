@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
-import { ContextPagination, ContextSearch } from '../../context'
+import { ContextSearch } from '../../context'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -13,10 +13,9 @@ export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const { category, sort } = useSelector((state) => state.filter)
+  const { category, sort, currentPage } = useSelector((state) => state.filter)
 
   const { search } = useContext(ContextSearch)
-  const { page } = useContext(ContextPagination)
 
   useEffect(() => {
     setIsLoading(true)
@@ -26,13 +25,13 @@ export const MainPage = () => {
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
     const searchValue = search ? `&search=${search}` : ''
 
-    axios.get(`${API_URL_BURGERS}?limit=8&page=${page}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`).then((res) => {
+    axios.get(`${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`).then((res) => {
       setBurgers(res.data)
       setIsLoading(false)
     })
 
     window.scrollTo(0, 0)
-  }, [category, sort, search, page])
+  }, [category, sort, search, currentPage])
 
   const skeletonPizzas = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
   const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)

@@ -1,20 +1,17 @@
 import clsx from 'clsx'
-import { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { ContextPagination } from '../../../context'
 import { BURGER_CATEGORIES } from '../../../data'
-import { setCategory } from '../../../store/filter/slice'
+import { setCategory, setCurrentPage } from '../../../store/filter/slice'
 import styles from './styles.module.scss'
 
 export const Categories = () => {
   const dispatch = useDispatch()
 
   const { category } = useSelector((state) => state.filter)
-  const { setPage } = useContext(ContextPagination)
 
   const onChangeCategory = (value) => {
-    setPage(1)
+    dispatch(setCurrentPage(1))
     dispatch(setCategory(value))
   }
 

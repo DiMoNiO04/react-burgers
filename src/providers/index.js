@@ -1,5 +1,4 @@
 export { ProviderContexts } from './ProviderContexts'
-export { ProviderPaginationContext } from './ProviderPaginationContext'
 export { ProviderRouter } from './ProviderRouter'
 export { ProviderSearchContext } from './ProviderSearchContext'
 export { ProviderStore } from './ProviderStore'
