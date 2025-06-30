@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -25,12 +26,10 @@ export const MainPage = () => {
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
     const searchValue = search ? `&search=${search}` : ''
 
-    fetch(`${API_URL_BURGERS}?limit=8&page=${page}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBurgers(data)
-        setIsLoading(false)
-      })
+    axios.get(`${API_URL_BURGERS}?limit=8&page=${page}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`).then((res) => {
+      setBurgers(res.data)
+      setIsLoading(false)
+    })
 
     window.scrollTo(0, 0)
   }, [category, sort, search, page])
