@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
-import { ContextCategory, ContextPagination, ContextSearch, ContextSort } from '../../context'
+import { ContextPagination, ContextSearch } from '../../context'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -11,9 +12,9 @@ export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
+  const { category, sort } = useSelector((state) => state.filter)
+
   const { search } = useContext(ContextSearch)
-  const { sort } = useContext(ContextSort)
-  const { category } = useContext(ContextCategory)
   const { page } = useContext(ContextPagination)
 
   useEffect(() => {

@@ -1,7 +1,5 @@
-export { ProviderCategoryContext } from './ProviderCategoryContext'
 export { ProviderContexts } from './ProviderContexts'
 export { ProviderPaginationContext } from './ProviderPaginationContext'
 export { ProviderRouter } from './ProviderRouter'
 export { ProviderSearchContext } from './ProviderSearchContext'
-export { ProviderSortContext } from './ProviderSortContext'
 export { ProviderStore } from './ProviderStore'
