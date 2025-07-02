@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
-import { ContextSearch } from '../../context'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -13,9 +12,7 @@ export const MainPage = () => {
   const [burgers, setBurgers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const { category, sort, currentPage } = useSelector((state) => state.filter)
-
-  const { search } = useContext(ContextSearch)
+  const { category, sort, currentPage, search } = useSelector((state) => state.filter)
 
   useEffect(() => {
     setIsLoading(true)
