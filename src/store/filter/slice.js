@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { BURGER_CATEGORIES, SORT_OPTIONS } from '../../data/filters'
 
-const initialState = {
+export const initialStateFilter = {
   category: BURGER_CATEGORIES[0].value,
   sort: SORT_OPTIONS[0],
   currentPage: 1,
@@ -11,7 +11,7 @@ const initialState = {
 
 export const filterSlice = createSlice({
   name: 'filter',
-  initialState,
+  initialState: initialStateFilter,
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload
@@ -25,8 +25,14 @@ export const filterSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload
     },
+    setFilters: (state, action) => {
+      state.sort = action.payload.sort
+      state.currentPage = Number(action.payload.currentPage)
+      state.category = Number(action.payload.category)
+      state.search = action.payload.search
+    },
   },
 })
 
-export const { setCategory, setSort, setCurrentPage, setSearch } = filterSlice.actions
+export const { setCategory, setSort, setCurrentPage, setSearch, setFilters } = filterSlice.actions
 export default filterSlice.reducer

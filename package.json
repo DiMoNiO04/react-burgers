@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
+    "qs": "^6.14.0",
     "react": "^19.1.0",
     "react-content-loader": "^7.0.2",
     "react-dom": "^19.1.0",
