@@ -30,12 +30,12 @@ export const Sort = () => {
         setIsOpenSort(false)
       }
     }
-  
+
     document.body.addEventListener('click', handleClickOutside)
-  
+
     return () => document.body.removeEventListener('click', handleClickOutside)
   }, [])
-  
+
   return (
     <div className={styles.block} ref={sortRef}>
       <button type="button" className={clsx(styles.label, isOpenSort && styles.labelOpen)} onClick={toggleOpenSort}>

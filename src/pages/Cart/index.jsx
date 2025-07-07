@@ -1,25 +1,24 @@
+import { useSelector } from 'react-redux'
+
 import { CardCart, CartBottom, CartEmpty, CartHeader } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import styles from './styles.module.scss'
 
 export const CartPage = () => {
-  const isEmpty = false
+  const { burgers, totalCount } = useSelector((state) => state.cart)
 
   return (
     <Layout>
       <div className={styles.content}>
-        {isEmpty ? (
+        {totalCount === 0 ? (
           <CartEmpty />
         ) : (
           <>
             <CartHeader />
             <div className={styles.cards}>
-              <CardCart />
-              <CardCart />
-              <CardCart />
-              <CardCart />
-              <CardCart />
-              <CardCart />
+              {burgers.map((burger) => (
+                <CardCart key={burger.id} {...burger} />
+              ))}
             </div>
             <CartBottom />
           </>

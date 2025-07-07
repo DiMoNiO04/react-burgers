@@ -1,28 +1,31 @@
+import { BURGER_SIZES } from '../../../data'
 import { IconClose, IconMinus, IconPlus } from '../../icons'
 import styles from './styles.module.scss'
 
-export const CardCart = () => {
+export const CardCart = ({ imageUrl, title, type, count, size }) => {
   return (
     <div className={styles.card}>
       <div className={styles.mainInfo}>
         <div className={styles.img}>
-          <img src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
+          <img src={imageUrl} alt="" />
         </div>
         <div className={styles.info}>
-          <h3>Острый цыпленок</h3>
-          <p>тонкое тесто, 26 см.</p>
+          <h3>{title}</h3>
+          <p>
+            {type.name}, {BURGER_SIZES.find((burgerSize) => burgerSize.value === size.id).name}
+          </p>
         </div>
       </div>
       <div className={styles.count}>
-        <button type="button" className={styles.countBtn}>
+        <button type="button" className={styles.countBtn} disabled={count === 1}>
           <IconMinus />
         </button>
-        <b>2</b>
+        <b>{count}</b>
         <button type="button" className={styles.countBtn}>
           <IconPlus />
         </button>
       </div>
-      <div className={styles.price}>770 ₽</div>
+      <div className={styles.price}>{(size.price * count).toFixed(2)} BYN</div>
       <div className={styles.remove}>
         <button type="button" className={styles.btnRemove}>
           <IconClose />
