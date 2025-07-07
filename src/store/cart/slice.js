@@ -61,3 +61,6 @@ export const cartSlice = createSlice({
 
 export const { addBurgerCart, removeBurgerCart, changeBurgerCount, clearCart } = cartSlice.actions
 export default cartSlice.reducer
+
+export const selectCart = (state) => state.cart
+export const selectCardCart = (id) => (state) => state.cart.burgers.filter((burger) => burger.id === id).reduce((sum, burger) => sum + (burger.count || 0), 0)

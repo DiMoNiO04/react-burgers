@@ -35,3 +35,5 @@ export const burgersSlice = createSlice({
 
 export const { setBurgers } = burgersSlice.actions
 export default burgersSlice.reducer
+
+export const selectBurgers = (state) => state.burgers

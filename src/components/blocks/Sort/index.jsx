@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { SORT_OPTIONS } from '../../../data'
-import { setCurrentPage, setSort } from '../../../store/filter/slice'
+import { selectFilter, setCurrentPage, setSort } from '../../../store/filter/slice'
 import { IconArrow } from '../../icons'
 import styles from './styles.module.scss'
 
@@ -16,7 +16,7 @@ export const Sort = () => {
 
   const toggleOpenSort = () => setIsOpenSort((prev) => !prev)
 
-  const { sort } = useSelector((state) => state.filter)
+  const { sort } = useSelector(selectFilter)
 
   const onClickSort = (value) => {
     dispatch(setCurrentPage(1))

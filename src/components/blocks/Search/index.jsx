@@ -2,14 +2,14 @@ import debounce from 'lodash.debounce'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setCurrentPage, setSearch } from '../../../store/filter/slice'
+import { selectFilter, setCurrentPage, setSearch } from '../../../store/filter/slice'
 import { IconClose, IconSearch } from '../../icons'
 import styles from './styles.module.scss'
 
 export const Search = () => {
   const dispatch = useDispatch()
 
-  const { search } = useSelector((state) => state.filter)
+  const { search } = useSelector(selectFilter)
   const [searchValue, setSearchValue] = useState(search)
 
   const inputRef = useRef()

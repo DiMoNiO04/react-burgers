@@ -7,8 +7,8 @@ import { Card, Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
 import { SORT_OPTIONS } from '../../data'
-import { fetchBurgers } from '../../store/burgers/slice'
-import { initialStateFilter, setFilters } from '../../store/filter/slice'
+import { fetchBurgers, selectBurgers } from '../../store/burgers/slice'
+import { initialStateFilter, selectFilter, setFilters } from '../../store/filter/slice'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
@@ -19,8 +19,8 @@ export const MainPage = () => {
   const isSearch = useRef(false)
   const isMounted = useRef(false)
 
-  const { burgers, status } = useSelector((state) => state.burgers)
-  const { category, sort, currentPage, search } = useSelector((state) => state.filter)
+  const { burgers, status } = useSelector(selectBurgers)
+  const { category, sort, currentPage, search } = useSelector(selectFilter)
 
   const getBurgers = async () => {
     const categoryValue = category > 0 ? `&category=${category}` : ''

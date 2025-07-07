@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { BURGER_SIZES, BURGER_TYPES } from '../../../data/filters'
-import { addBurgerCart } from '../../../store/cart/slice'
+import { addBurgerCart, selectCardCart } from '../../../store/cart/slice'
 import { CHEESE_TYPE, PRICE_CHEESE_TYPE } from '../../../utils/consts'
 import { AddButton } from '../../ui'
 import styles from './styles.module.scss'
@@ -11,7 +11,7 @@ import styles from './styles.module.scss'
 export const Card = ({ id, imageUrl, title, sizes, types }) => {
   const dispatch = useDispatch()
 
-  const count = useSelector((state) => state.cart.burgers.filter((burger) => burger.id === id).reduce((sum, burger) => sum + (burger.count || 0), 0))
+  const count = useSelector(selectCardCart(id))
 
   const [burgerType, setBurgerType] = useState(types[0] || 0)
   const [burgerSize, setBurgerSize] = useState(sizes[0].id || 0)

@@ -2,10 +2,11 @@ import { useSelector } from 'react-redux'
 
 import { CardCart, CartBottom, CartEmpty, CartHeader } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
+import { selectCart } from '../../store/cart/slice'
 import styles from './styles.module.scss'
 
 export const CartPage = () => {
-  const { burgers, totalCount } = useSelector((state) => state.cart)
+  const { burgers, totalCount } = useSelector(selectCart)
 
   return (
     <Layout>

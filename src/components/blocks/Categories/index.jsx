@@ -2,13 +2,13 @@ import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { BURGER_CATEGORIES } from '../../../data'
-import { setCategory, setCurrentPage } from '../../../store/filter/slice'
+import { selectFilter, setCategory, setCurrentPage } from '../../../store/filter/slice'
 import styles from './styles.module.scss'
 
 export const Categories = () => {
   const dispatch = useDispatch()
 
-  const { category } = useSelector((state) => state.filter)
+  const { category } = useSelector(selectFilter)
 
   const onChangeCategory = (value) => {
     dispatch(setCurrentPage(1))
