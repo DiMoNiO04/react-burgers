@@ -1,6 +1,7 @@
 export { AddButton } from './AddButton'
 export { BtnBack } from './BtnBack'
 export { BtnScroll } from './BtnScroll'
+export { ConfirmModal } from './ConfirmModal'
 export { HeaderCart } from './HeaderCart'
 export { Logo } from './Logo'
 export { Title } from './Title'
