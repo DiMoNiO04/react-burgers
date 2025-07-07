@@ -20,6 +20,7 @@ export const Card = ({ id, imageUrl, title, sizes, types }) => {
   const handleBurgerSizeChange = (value) => setBurgerSize(value)
 
   const basePrice = sizes.find((size) => size.id === burgerSize)?.price || 0
+
   const price = burgerType === CHEESE_TYPE ? Number((basePrice + PRICE_CHEESE_TYPE).toFixed(2)) : Number(basePrice.toFixed(2))
 
   const onAddBurgerCart = () => {
@@ -27,8 +28,8 @@ export const Card = ({ id, imageUrl, title, sizes, types }) => {
       id,
       imageUrl,
       title,
-      type: BURGER_TYPES[burgerType],
-      size: sizes[burgerSize],
+      type: BURGER_TYPES.find((t) => t.value === burgerType),
+      size: sizes.find((s) => s.id === burgerSize),
     }
 
     dispatch(addBurgerCart(burgerCart))
