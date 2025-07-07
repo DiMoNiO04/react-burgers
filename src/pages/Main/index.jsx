@@ -1,13 +1,13 @@
-import axios from 'axios'
 import qs from 'qs'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
-import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
+import { Card, Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
 import { SORT_OPTIONS } from '../../data'
+import { fetchBurgers } from '../../store/burgers/slice'
 import { initialStateFilter, setFilters } from '../../store/filter/slice'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
@@ -19,23 +19,18 @@ export const MainPage = () => {
   const isSearch = useRef(false)
   const isMounted = useRef(false)
 
-  const [burgers, setBurgers] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-
+  const { burgers, status } = useSelector((state) => state.burgers)
   const { category, sort, currentPage, search } = useSelector((state) => state.filter)
 
-  const fetchBurgers = () => {
-    setIsLoading(true)
-
+  const getBurgers = async () => {
     const categoryValue = category > 0 ? `&category=${category}` : ''
     const sortByValue = sort.value.replace('-', '')
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
     const searchValue = search ? `&search=${search}` : ''
 
-    axios.get(`${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`).then((res) => {
-      setBurgers(res.data)
-      setIsLoading(false)
-    })
+    const apiUrl = `${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`
+
+    dispatch(fetchBurgers({ apiUrl }))
   }
 
   useEffect(() => {
@@ -84,7 +79,7 @@ export const MainPage = () => {
     window.scrollTo(0, 0)
 
     if (!isSearch.current) {
-      fetchBurgers()
+      getBurgers()
     }
 
     isSearch.current = false
@@ -95,13 +90,19 @@ export const MainPage = () => {
 
   return (
     <Layout>
-      <div className={styles.filter}>
-        <Categories />
-        <Sort />
-      </div>
-      <Title title="Все бургеры" />
-      <div className={styles.cards}>{isLoading ? skeletonBurgers : burgerCards}</div>
-      <Pagination />
+      {status === 'error' ? (
+        <ErrorContent />
+      ) : (
+        <>
+          <div className={styles.filter}>
+            <Categories />
+            <Sort />
+          </div>
+          <Title title="Все бургеры" />
+          <div className={styles.cards}>{status === 'loading' ? skeletonBurgers : burgerCards}</div>
+          <Pagination />
+        </>
+      )}
     </Layout>
   )
 }
