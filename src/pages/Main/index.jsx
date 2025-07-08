@@ -1,10 +1,9 @@
 import qs from 'qs'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import { Card, Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '../../components/blocks'
-import { Layout } from '../../components/layouts'
 import { Title } from '../../components/ui'
 import { SORT_OPTIONS } from '../../data'
 import { fetchBurgers, selectBurgers } from '../../store/burgers/slice'
@@ -89,7 +88,7 @@ export const MainPage = () => {
   const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
 
   return (
-    <Layout>
+    <>
       {status === 'error' ? (
         <ErrorContent />
       ) : (
@@ -103,6 +102,6 @@ export const MainPage = () => {
           <Pagination />
         </>
       )}
-    </Layout>
+    </>
   )
 }

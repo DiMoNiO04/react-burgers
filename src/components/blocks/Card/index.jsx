@@ -1,10 +1,12 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router'
 
 import { BURGER_SIZES, BURGER_TYPES } from '../../../data/filters'
 import { addBurgerCart, selectCardCart } from '../../../store/cart/slice'
 import { CHEESE_TYPE, PRICE_CHEESE_TYPE } from '../../../utils/consts'
+import { URLS } from '../../../utils/urls'
 import { AddButton } from '../../ui'
 import styles from './styles.module.scss'
 
@@ -37,8 +39,10 @@ export const Card = ({ id, imageUrl, title, sizes, types }) => {
 
   return (
     <div className={styles.block}>
-      <img className={styles.image} src={imageUrl} alt="" />
-      <h3 className={styles.title}>{title}</h3>
+      <Link to={`${URLS.SINGLE_BURGER}${id}`}>
+        <img className={styles.image} src={imageUrl} alt="" />
+        <h3 className={styles.title}>{title}</h3>
+      </Link>
       <div className={styles.selector}>
         <ul className={styles.selectorList}>
           {BURGER_TYPES.filter(({ value }) => types.includes(value)).map(({ value, name }) => (

@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router'
 
 import { BURGER_SIZES } from '../../../data'
 import { changeBurgerCount, removeBurgerCart } from '../../../store/cart/slice'
+import { URLS } from '../../../utils/urls'
 import { IconClose, IconMinus, IconPlus } from '../../icons'
 import styles from './styles.module.scss'
 
@@ -42,7 +44,7 @@ export const CardCart = ({ id, imageUrl, title, type, count, size }) => {
 
   return (
     <div className={styles.card}>
-      <div className={styles.mainInfo}>
+      <Link to={`${URLS.SINGLE_BURGER}${id}`} className={styles.mainInfo}>
         <div className={styles.img}>
           <img src={imageUrl} alt="" />
         </div>
@@ -52,7 +54,7 @@ export const CardCart = ({ id, imageUrl, title, type, count, size }) => {
             {type.name}, {BURGER_SIZES.find((burgerSize) => burgerSize.value === size.id).name}
           </p>
         </div>
-      </div>
+      </Link>
       <div className={styles.count}>
         <button type="button" className={styles.countBtn} disabled={count === 1} onClick={handleDecrease}>
           <IconMinus />
