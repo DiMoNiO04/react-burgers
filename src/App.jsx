@@ -1,9 +1,9 @@
-import { ProviderContexts, ProviderRouter } from './providers'
+import { ProviderRouter, ProviderStore } from './providers'
 
 export const App = () => {
   return (
-    <ProviderContexts>
+    <ProviderStore>
       <ProviderRouter />
-    </ProviderContexts>
+    </ProviderStore>
   )
 }

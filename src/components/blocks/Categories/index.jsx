@@ -1,25 +1,26 @@
 import clsx from 'clsx'
-import { useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { ContextCategory, ContextPagination } from '../../../context'
 import { BURGER_CATEGORIES } from '../../../data'
+import { selectFilter, setCategory, setCurrentPage } from '../../../store/filter/slice'
 import styles from './styles.module.scss'
 
 export const Categories = () => {
-  const { category, setCategory } = useContext(ContextCategory)
-  const { setPage } = useContext(ContextPagination)
+  const dispatch = useDispatch()
+
+  const { category } = useSelector(selectFilter)
 
   const onChangeCategory = (value) => {
-    setPage(1)
-    setCategory(value)
+    dispatch(setCurrentPage(1))
+    dispatch(setCategory(value))
   }
 
   return (
     <div className={styles.block}>
       <ul className={styles.list}>
-        {BURGER_CATEGORIES.map(({ value, name }, index) => (
+        {BURGER_CATEGORIES.map(({ value, name }) => (
           <li key={value}>
-            <button type="button" className={clsx(styles.item, index === category && styles.itemActive)} onClick={() => onChangeCategory(index)}>
+            <button type="button" className={clsx(styles.item, value === category && styles.itemActive)} onClick={() => onChangeCategory(value)}>
               {name}
             </button>
           </li>

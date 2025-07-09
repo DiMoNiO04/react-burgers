@@ -1,30 +1,72 @@
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router'
+
+import { BURGER_SIZES } from '../../../data'
+import { changeBurgerCount, removeBurgerCart } from '../../../store/cart/slice'
+import { URLS } from '../../../utils/urls'
 import { IconClose, IconMinus, IconPlus } from '../../icons'
 import styles from './styles.module.scss'
 
-export const CardCart = () => {
+export const CardCart = ({ id, imageUrl, title, type, count, size }) => {
+  const dispatch = useDispatch()
+
+  const handleIncrease = () => {
+    dispatch(
+      changeBurgerCount({
+        id,
+        sizeId: size.id,
+        typeValue: type.value,
+        delta: 1,
+      }),
+    )
+  }
+
+  const handleDecrease = () => {
+    dispatch(
+      changeBurgerCount({
+        id,
+        sizeId: size.id,
+        typeValue: type.value,
+        delta: -1,
+      }),
+    )
+  }
+
+  const handleRemove = () => {
+    dispatch(
+      removeBurgerCart({
+        id,
+        sizeId: size.id,
+        typeValue: type.value,
+      }),
+    )
+  }
+
   return (
     <div className={styles.card}>
-      <div className={styles.mainInfo}>
+      <Link to={`${URLS.SINGLE_BURGER}${id}`} className={styles.mainInfo}>
         <div className={styles.img}>
-          <img src="https://burger-king.by/api/v1/files/path/1_CategoryItem_1066354_D820F7D11E073DD67D30B8CFC937B2CA.webp" alt="Burger" />
+          <img src={imageUrl} alt="" />
         </div>
         <div className={styles.info}>
-          <h3>Острый цыпленок</h3>
-          <p>тонкое тесто, 26 см.</p>
+          <h3>{title}</h3>
+          <p>
+            {type.name}, {BURGER_SIZES.find((burgerSize) => burgerSize.value === size.id).name}
+          </p>
         </div>
-      </div>
+      </Link>
       <div className={styles.count}>
-        <button type="button" className={styles.countBtn}>
+        <button type="button" className={styles.countBtn} disabled={count === 1} onClick={handleDecrease}>
           <IconMinus />
         </button>
-        <b>2</b>
-        <button type="button" className={styles.countBtn}>
+        <b>{count}</b>
+        <button type="button" className={styles.countBtn} onClick={handleIncrease}>
           <IconPlus />
         </button>
       </div>
-      <div className={styles.price}>770 ₽</div>
+      <div className={styles.price}>{(size.price * count).toFixed(2)} BYN</div>
       <div className={styles.remove}>
-        <button type="button" className={styles.btnRemove}>
+        <button type="button" className={styles.btnRemove} onClick={handleRemove}>
           <IconClose />
         </button>
       </div>

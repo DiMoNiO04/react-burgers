@@ -1,51 +1,107 @@
-import { useContext, useEffect, useState } from 'react'
+import qs from 'qs'
+import { useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
-import { Card, Categories, Pagination, SkeletonCard, Sort } from '../../components/blocks'
-import { Layout } from '../../components/layouts'
+import { Card, Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Title } from '../../components/ui'
-import { ContextCategory, ContextPagination, ContextSearch, ContextSort } from '../../context'
+import { SORT_OPTIONS } from '../../data'
+import { fetchBurgers, selectBurgers } from '../../store/burgers/slice'
+import { initialStateFilter, selectFilter, setFilters } from '../../store/filter/slice'
 import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
 export const MainPage = () => {
-  const [burgers, setBurgers] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const { search } = useContext(ContextSearch)
-  const { sort } = useContext(ContextSort)
-  const { category } = useContext(ContextCategory)
-  const { page } = useContext(ContextPagination)
+  const isSearch = useRef(false)
+  const isMounted = useRef(false)
 
-  useEffect(() => {
-    setIsLoading(true)
+  const { burgers, status } = useSelector(selectBurgers)
+  const { category, sort, currentPage, search } = useSelector(selectFilter)
 
+  const getBurgers = async () => {
     const categoryValue = category > 0 ? `&category=${category}` : ''
     const sortByValue = sort.value.replace('-', '')
     const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
     const searchValue = search ? `&search=${search}` : ''
 
-    fetch(`${API_URL_BURGERS}?limit=8&page=${page}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBurgers(data)
-        setIsLoading(false)
-      })
+    const apiUrl = `${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`
 
+    dispatch(fetchBurgers({ apiUrl }))
+  }
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1))
+
+      const sortOption = SORT_OPTIONS.find((item) => item.value === params.sort)
+
+      dispatch(
+        setFilters({
+          category: Number(params.category) || 0,
+          sort: sortOption || SORT_OPTIONS[0],
+          currentPage: Number(params.page) || 1,
+          search: params.search || '',
+        }),
+      )
+
+      isSearch.current = true
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const query = {}
+
+      if (sort.value !== initialStateFilter.sort.value) {
+        query.sort = sort.value
+      }
+      if (category !== initialStateFilter.category) {
+        query.category = category
+      }
+      if (currentPage !== initialStateFilter.currentPage) {
+        query.page = currentPage
+      }
+      if (search !== initialStateFilter.search) {
+        query.search = search
+      }
+
+      const queryString = qs.stringify(query)
+      navigate(queryString ? `?${queryString}` : '')
+    }
+    isMounted.current = true
+  }, [category, sort, currentPage, search, navigate])
+
+  useEffect(() => {
     window.scrollTo(0, 0)
-  }, [category, sort, search, page])
 
-  const skeletonPizzas = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
+    if (!isSearch.current) {
+      getBurgers()
+    }
+
+    isSearch.current = false
+  }, [category, sort, currentPage, search])
+
+  const skeletonBurgers = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
   const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
 
   return (
-    <Layout>
-      <div className={styles.filter}>
-        <Categories />
-        <Sort />
-      </div>
-      <Title title={'Все пиццы'} />
-      <div className={styles.cards}>{isLoading ? skeletonPizzas : burgerCards}</div>
-      <Pagination />
-    </Layout>
+    <>
+      {status === 'error' ? (
+        <ErrorContent />
+      ) : (
+        <>
+          <div className={styles.filter}>
+            <Categories />
+            <Sort />
+          </div>
+          <Title title="Все бургеры" />
+          <div className={styles.cards}>{status === 'loading' ? skeletonBurgers : burgerCards}</div>
+          <Pagination />
+        </>
+      )}
+    </>
   )
 }

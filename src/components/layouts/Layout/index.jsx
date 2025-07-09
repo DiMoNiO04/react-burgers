@@ -1,15 +1,20 @@
+import { Outlet, useLocation } from 'react-router'
+
+import { URLS } from '../../../utils/urls'
 import { BtnScroll } from '../../ui'
 import { Header } from '../Header'
 import { Wrapper } from '../Wrapper'
 
-export const Layout = ({ children }) => {
-  const isMainPage = !window.location.pathname.slice(1)
+export const Layout = () => {
+  const { pathname } = useLocation()
+
+  const isViewContent = pathname === URLS.MAIN || pathname.startsWith(URLS.SINGLE_BURGER)
 
   return (
     <Wrapper>
-      <Header isMainPage={isMainPage} />
+      <Header isViewContent={isViewContent} />
       <main>
-        {children}
+        <Outlet />
         <BtnScroll />
       </main>
     </Wrapper>

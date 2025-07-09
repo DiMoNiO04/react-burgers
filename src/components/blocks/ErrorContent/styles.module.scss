@@ -1,0 +1,50 @@
+.content {
+  @include flexColumn;
+  row-gap: 12px;
+  align-items: center;
+  margin: 60px auto;
+  width: 100%;
+}
+
+.title {
+  font-size: 48px;
+}
+
+.desc {
+  max-width: 600px;
+  font-style: italic;
+  text-align: center;
+}
+
+.retryButton {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: $orange;
+  color: $white;
+  border: 1px solid $orange;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  @include hover {
+    background-color: transparent;
+    color: $orange;
+  }
+}
+
+@media (max-width: $mob) {
+  .content {
+    row-gap: 8px;
+    margin: 32px auto;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .retryButton {
+    margin-top: 12px;
+  }
+}

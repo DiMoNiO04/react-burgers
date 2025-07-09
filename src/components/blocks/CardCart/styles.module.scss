@@ -77,6 +77,11 @@
       @include transition(fill);
     }
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .btnRemove {
@@ -106,11 +111,13 @@
     }
   }
 
-  @include hover {
-    background-color: $orange;
+  &:not(:disabled) {
+    @include hover {
+      background-color: $orange;
 
-    svg path {
-      fill: $white;
+      svg path {
+        fill: $white;
+      }
     }
   }
 }
