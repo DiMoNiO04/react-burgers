@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 
-import { Layout } from '../components/layouts'
-import { BurgerSinglePage, CartPage, MainPage, NotFoundPage } from '../pages'
-import { URLS } from '../utils/urls'
+import { Layout } from '@/components/layouts'
+import { BurgerSinglePage, CartPage, MainPage, NotFoundPage } from '@/pages'
+import { URLS } from '@/utils/urls'
 
 export const ProviderRouter = () => {
   return (

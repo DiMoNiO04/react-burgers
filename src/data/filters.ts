@@ -1,22 +1,24 @@
-export const SORT_OPTIONS = [
+import { IFilterOption } from '@/utils/interfaces'
+
+export const SORT_OPTIONS: IFilterOption<string>[] = [
   { name: 'алфавиту (ASC)', value: '-title' },
   { name: 'алфавиту (DESC)', value: 'title' },
   { name: 'популярности (ASC)', value: '-rating' },
   { name: 'популярности (DESC)', value: 'rating' },
 ]
 
-export const BURGER_SIZES = [
+export const BURGER_SIZES: IFilterOption<number>[] = [
   { name: 'Джуниор', value: 0 },
   { name: 'Медиум', value: 1 },
   { name: 'Биг', value: 2 },
 ]
 
-export const BURGER_TYPES = [
+export const BURGER_TYPES: IFilterOption<number>[] = [
   { name: 'Классика', value: 0 },
   { name: 'Острый', value: 1 },
 ]
 
-export const BURGER_CATEGORIES = [
+export const BURGER_CATEGORIES: IFilterOption<number>[] = [
   { name: 'Все', value: 0 },
   { name: 'Куриные', value: 1 },
   { name: 'Говяжьи', value: 2 },

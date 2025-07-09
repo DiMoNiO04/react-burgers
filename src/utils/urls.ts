@@ -4,3 +4,5 @@ export const URLS = {
   SINGLE_BURGER: '/burgers/',
   NOT_FOUND: '*',
 }
+
+export type URLS = (typeof URLS)[keyof typeof URLS]
