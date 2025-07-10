@@ -8,7 +8,7 @@ import { Wrapper } from '../Wrapper'
 export const Layout = () => {
   const { pathname } = useLocation()
 
-  const isViewContent = pathname === URLS.MAIN || pathname.startsWith(URLS.SINGLE_BURGER)
+  const isViewContent: boolean = pathname === URLS.MAIN || pathname.startsWith(URLS.SINGLE_BURGER)
 
   return (
     <Wrapper>

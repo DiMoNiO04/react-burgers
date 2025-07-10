@@ -13,7 +13,7 @@ export const NotFoundPage = () => {
         <p className={styles.desc}>К сожалению данная страница отсутствует в нашем интернет-магазине</p>
         <div className={styles.btns}>
           <BtnBack />
-          <Link href={URLS.MAIN} className={styles.btn}>
+          <Link to={URLS.MAIN} className={styles.btn}>
             На главную
           </Link>
         </div>

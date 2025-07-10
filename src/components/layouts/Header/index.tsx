@@ -2,7 +2,11 @@ import { Search } from '../../blocks'
 import { HeaderCart, Logo } from '../../ui'
 import styles from './styles.module.scss'
 
-export const Header = ({ isViewContent }) => {
+interface IHeaderProps {
+  isViewContent: boolean
+}
+
+export const Header = ({ isViewContent }: IHeaderProps) => {
   return (
     <header className={styles.header}>
       <Logo />

@@ -10,7 +10,18 @@ import { URLS } from '../../../utils/urls'
 import { AddButton } from '../../ui'
 import styles from './styles.module.scss'
 
-export const Card = ({ id, imageUrl, title, sizes, types }) => {
+export interface ICardProps {
+  id: string
+  imageUrl: string
+  title: string
+  types: number[]
+  sizes: {
+    id: number
+    price: number
+  }[]
+}
+
+export const Card = ({ id, imageUrl, title, sizes, types }: ICardProps) => {
   const dispatch = useDispatch()
 
   const count = useSelector(selectCardCart(id))

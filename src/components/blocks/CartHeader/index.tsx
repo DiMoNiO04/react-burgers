@@ -29,7 +29,7 @@ export const CartHeader = () => {
         <span>Очистить корзину</span>
       </button>
 
-      <ConfirmModal open={openConfirmModalClear} title="Очистить корзину?" onCancel={handleCloseModal} onConfirm={handleClearCart} />
+      <ConfirmModal isOpen={openConfirmModalClear} title="Очистить корзину?" onCancel={handleCloseModal} onConfirm={handleClearCart} />
     </div>
   )
 }

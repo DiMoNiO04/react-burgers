@@ -1,7 +1,12 @@
 import { IconPlus } from '../../icons'
 import styles from './styles.module.scss'
 
-export const AddButton = ({ count = 0, onClick }) => {
+interface IAddButtonProps {
+  count: number
+  onClick: () => void
+}
+
+export const AddButton = ({ count = 0, onClick }: IAddButtonProps) => {
   return (
     <button type="button" className={styles.button} onClick={onClick}>
       <IconPlus />

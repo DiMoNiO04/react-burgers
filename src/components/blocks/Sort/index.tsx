@@ -18,7 +18,7 @@ export const Sort = () => {
 
   const { sort } = useSelector(selectFilter)
 
-  const onClickSort = (value) => {
+  const onClickSort = (value: number) => {
     dispatch(setCurrentPage(1))
     dispatch(setSort(value))
     toggleOpenSort()

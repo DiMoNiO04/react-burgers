@@ -2,8 +2,15 @@ import clsx from 'clsx'
 
 import styles from './styles.module.scss'
 
-export const ConfirmModal = ({ open, title, onConfirm, onCancel }) => {
-  if (!open) return null
+interface IConfirmModal {
+  isOpen: boolean
+  title: string
+  onConfirm: () => void
+  onCancel: () => void
+}
+
+export const ConfirmModal = ({ isOpen, title, onConfirm, onCancel }: IConfirmModal) => {
+  if (!isOpen) return null
 
   return (
     <div className={styles.block}>

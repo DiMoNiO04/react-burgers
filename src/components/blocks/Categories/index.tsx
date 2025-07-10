@@ -10,7 +10,7 @@ export const Categories = () => {
 
   const { category } = useSelector(selectFilter)
 
-  const onChangeCategory = (value) => {
+  const onChangeCategory = (value: number) => {
     dispatch(setCurrentPage(1))
     dispatch(setCategory(value))
   }

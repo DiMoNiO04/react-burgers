@@ -7,7 +7,22 @@ import { URLS } from '../../../utils/urls'
 import { IconClose, IconMinus, IconPlus } from '../../icons'
 import styles from './styles.module.scss'
 
-export const CardCart = ({ id, imageUrl, title, type, count, size }) => {
+export interface ICardCartProps {
+  id: string
+  imageUrl: string
+  title: string
+  type: {
+    name: string
+    value: number
+  }
+  count: number
+  size: {
+    id: number
+    price: number
+  }
+}
+
+export const CardCart = ({ id, imageUrl, title, type, count, size }: ICardCartProps) => {
   const dispatch = useDispatch()
 
   const handleIncrease = () => {
