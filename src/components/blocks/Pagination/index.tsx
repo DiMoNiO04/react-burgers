@@ -4,12 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectFilter, setCurrentPage } from '../../../store/filter/slice'
 import styles from './styles.module.scss'
 
+interface ISelectedItem {
+  selected: number
+}
+
 export const Pagination = () => {
   const dispatch = useDispatch()
 
   const { currentPage } = useSelector(selectFilter)
 
-  const handleChangeCurrentPage = (event) => dispatch(setCurrentPage(event.selected + 1))
+  const handleChangeCurrentPage = (event: ISelectedItem) => dispatch(setCurrentPage(event.selected + 1))
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { selectFilter, setCurrentPage, setSearch } from '../../../store/filter/slice'
@@ -12,28 +12,28 @@ export const Search = () => {
   const { search } = useSelector(selectFilter)
   const [searchValue, setSearchValue] = useState(search)
 
-  const inputRef = useRef()
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     setSearchValue(search)
   }, [search])
 
   const updateSearchValue = useCallback(
-    debounce((value) => {
+    debounce((value: string) => {
       dispatch(setCurrentPage(1))
       dispatch(setSearch(value))
     }, 1000),
     [],
   )
 
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
     updateSearchValue(e.target.value)
   }
 
   const onClearSearch = () => {
     dispatch(setSearch(''))
-    inputRef.current.focus()
+    inputRef.current?.focus()
   }
 
   return (

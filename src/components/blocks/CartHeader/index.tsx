@@ -9,7 +9,7 @@ import styles from './styles.module.scss'
 export const CartHeader = () => {
   const dispatch = useDispatch()
 
-  const [openConfirmModalClear, setOpenConfirmModalClear] = useState(false)
+  const [openConfirmModalClear, setOpenConfirmModalClear] = useState<boolean>(false)
 
   const handleOpenModal = () => setOpenConfirmModalClear(true)
   const handleCloseModal = () => setOpenConfirmModalClear(false)

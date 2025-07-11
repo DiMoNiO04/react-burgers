@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
+import { ICardProps } from '@/components/blocks/Card'
+
 import { Card, Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '../../components/blocks'
 import { Title } from '../../components/ui'
 import { SORT_OPTIONS } from '../../data'
@@ -15,33 +17,38 @@ export const MainPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const isSearch = useRef(false)
-  const isMounted = useRef(false)
+  const isSearch = useRef<boolean>(false)
+  const isMounted = useRef<boolean>(false)
 
-  const { burgers, status } = useSelector(selectBurgers)
-  const { category, sort, currentPage, search } = useSelector(selectFilter)
+  const { burgers, status } = useSelector((state) => selectBurgers(state))
+  const { category, sort, currentPage, search } = useSelector((state) => selectFilter(state))
 
   const getBurgers = async () => {
-    const categoryValue = category > 0 ? `&category=${category}` : ''
-    const sortByValue = sort.value.replace('-', '')
-    const sortOrderByValue = sort.value.includes('-') ? 'asc' : 'desc'
-    const searchValue = search ? `&search=${search}` : ''
+    const categoryValue: string = category > 0 ? `&category=${category}` : ''
+    const sortByValue: string = sort.value.replace('-', '')
+    const sortOrderByValue: string = sort.value.includes('-') ? 'asc' : 'desc'
+    const searchValue: string = search ? `&search=${search}` : ''
 
-    const apiUrl = `${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`
+    const apiUrl: string = `${API_URL_BURGERS}?limit=8&page=${currentPage}${categoryValue}&sortBy=${sortByValue}&order=${sortOrderByValue}${searchValue}`
 
     dispatch(fetchBurgers({ apiUrl }))
   }
 
   useEffect(() => {
     if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1))
+      const params = qs.parse(window.location.search.substring(1)) as {
+        sort?: string
+        category?: string
+        page?: string
+        search?: string
+      }
 
-      const sortOption = SORT_OPTIONS.find((item) => item.value === params.sort)
+      const sortOption = SORT_OPTIONS.find((item) => item.value === params.sort) ?? SORT_OPTIONS[0]
 
       dispatch(
         setFilters({
           category: Number(params.category) || 0,
-          sort: sortOption || SORT_OPTIONS[0],
+          sort: sortOption,
           currentPage: Number(params.page) || 1,
           search: params.search || '',
         }),
@@ -53,7 +60,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     if (isMounted.current) {
-      const query = {}
+      const query: Record<string, string | number> = {}
 
       if (sort.value !== initialStateFilter.sort.value) {
         query.sort = sort.value
@@ -71,6 +78,7 @@ export const MainPage = () => {
       const queryString = qs.stringify(query)
       navigate(queryString ? `?${queryString}` : '')
     }
+
     isMounted.current = true
   }, [category, sort, currentPage, search, navigate])
 
@@ -85,7 +93,7 @@ export const MainPage = () => {
   }, [category, sort, currentPage, search])
 
   const skeletonBurgers = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
-  const burgerCards = burgers.map((burger) => <Card key={burger.id} {...burger} />)
+  const burgerCards = burgers.map((burger: ICardProps) => <Card key={burger.id} {...burger} />)
 
   return (
     <>

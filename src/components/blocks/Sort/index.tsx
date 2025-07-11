@@ -2,6 +2,8 @@ import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { IFilterOption } from '@/utils/interfaces'
+
 import { SORT_OPTIONS } from '../../../data'
 import { selectFilter, setCurrentPage, setSort } from '../../../store/filter/slice'
 import { IconArrow } from '../../icons'
@@ -10,29 +12,28 @@ import styles from './styles.module.scss'
 export const Sort = () => {
   const dispatch = useDispatch()
 
-  const sortRef = useRef(null)
+  const sortRef = useRef<HTMLDivElement>(null)
 
-  const [isOpenSort, setIsOpenSort] = useState(false)
+  const [isOpenSort, setIsOpenSort] = useState<boolean>(false)
 
   const toggleOpenSort = () => setIsOpenSort((prev) => !prev)
 
   const { sort } = useSelector(selectFilter)
 
-  const onClickSort = (value: number) => {
+  const onClickSort = (value: IFilterOption<string>) => {
     dispatch(setCurrentPage(1))
     dispatch(setSort(value))
     toggleOpenSort()
   }
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setIsOpenSort(false)
       }
     }
 
     document.body.addEventListener('click', handleClickOutside)
-
     return () => document.body.removeEventListener('click', handleClickOutside)
   }, [])
 

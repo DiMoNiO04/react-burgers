@@ -26,15 +26,14 @@ export const Card = ({ id, imageUrl, title, sizes, types }: ICardProps) => {
 
   const count = useSelector(selectCardCart(id))
 
-  const [burgerType, setBurgerType] = useState(types[0] || 0)
-  const [burgerSize, setBurgerSize] = useState(sizes[0].id || 0)
+  const [burgerType, setBurgerType] = useState<number>(types[0] || 0)
+  const [burgerSize, setBurgerSize] = useState<number>(sizes[0].id || 0)
 
-  const handleBurgerTypeChange = (value) => setBurgerType(value)
-  const handleBurgerSizeChange = (value) => setBurgerSize(value)
+  const handleBurgerTypeChange = (value: number) => setBurgerType(value)
+  const handleBurgerSizeChange = (value: number) => setBurgerSize(value)
 
-  const basePrice = sizes.find((size) => size.id === burgerSize)?.price || 0
-
-  const price = burgerType === CHEESE_TYPE ? Number((basePrice + PRICE_CHEESE_TYPE).toFixed(2)) : Number(basePrice.toFixed(2))
+  const basePrice: number = sizes.find((size) => size.id === burgerSize)?.price || 0
+  const price: number = burgerType === CHEESE_TYPE ? Number((basePrice + PRICE_CHEESE_TYPE).toFixed(2)) : Number(basePrice.toFixed(2))
 
   const onAddBurgerCart = () => {
     const burgerCart = {

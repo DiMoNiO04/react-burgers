@@ -66,7 +66,7 @@ export const CardCart = ({ id, imageUrl, title, type, count, size }: ICardCartPr
         <div className={styles.info}>
           <h3>{title}</h3>
           <p>
-            {type.name}, {BURGER_SIZES.find((burgerSize) => burgerSize.value === size.id).name}
+            {type.name}, {BURGER_SIZES.find((burgerSize) => burgerSize.value === size.id)?.name}
           </p>
         </div>
       </Link>
