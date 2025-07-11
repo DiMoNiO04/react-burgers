@@ -1,4 +1,5 @@
-import { IconArrowRound } from '../../icons/IconArrowRound'
+import { IconArrowRound } from '@/components/icons'
+
 import styles from './styles.module.scss'
 
 export const BtnScroll = () => {

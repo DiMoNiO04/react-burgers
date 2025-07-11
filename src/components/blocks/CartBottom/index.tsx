@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router'
 
-import { selectCart } from '../../../store/cart/slice'
-import { URLS } from '../../../utils/urls'
-import { IconArrowRound } from '../../icons'
+import { IconArrowRound } from '@/components/icons'
+import { selectCart } from '@/store/cart/slice'
+import { URLS } from '@/utils/urls'
+
 import styles from './styles.module.scss'
 
 export const CartBottom = () => {

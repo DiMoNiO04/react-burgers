@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router'
 
-import { BURGER_SIZES, BURGER_TYPES } from '../../../data/filters'
-import { addBurgerCart, selectCardCart } from '../../../store/cart/slice'
-import { CHEESE_TYPE, PRICE_CHEESE_TYPE } from '../../../utils/consts'
-import { URLS } from '../../../utils/urls'
-import { AddButton } from '../../ui'
+import { AddButton } from '@/components/ui'
+import { BURGER_SIZES, BURGER_TYPES } from '@/data'
+import { addBurgerCart, selectCardCart } from '@/store/cart/slice'
+import { CHEESE_TYPE, PRICE_CHEESE_TYPE } from '@/utils/consts'
+import { URLS } from '@/utils/urls'
+
 import styles from './styles.module.scss'
 
 export interface ICardProps {

@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { clearCart } from '../../../store/cart/slice'
-import { IconCart, IconCartClear } from '../../icons'
-import { ConfirmModal, Title } from '../../ui'
+import { IconCart, IconCartClear } from '@/components/icons'
+import { ConfirmModal, Title } from '@/components/ui'
+import { clearCart } from '@/store/cart/slice'
+
 import styles from './styles.module.scss'
 
 export const CartHeader = () => {

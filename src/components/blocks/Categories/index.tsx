@@ -1,8 +1,9 @@
 import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { BURGER_CATEGORIES } from '../../../data'
-import { selectFilter, setCategory, setCurrentPage } from '../../../store/filter/slice'
+import { BURGER_CATEGORIES } from '@/data'
+import { selectFilter, setCategory, setCurrentPage } from '@/store/filter/slice'
+
 import styles from './styles.module.scss'
 
 export const Categories = () => {

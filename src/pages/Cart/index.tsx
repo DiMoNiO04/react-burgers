@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux'
 
-import { CardCart, CartBottom, CartEmpty, CartHeader } from '../../components/blocks'
-import { selectCart } from '../../store/cart/slice'
+import { CardCart, CartBottom, CartEmpty, CartHeader } from '@/components/blocks'
+import { selectCart } from '@/store/cart/slice'
+
 import styles from './styles.module.scss'
 
 export const CartPage = () => {

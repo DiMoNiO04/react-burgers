@@ -3,14 +3,14 @@ import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
-import { ICardProps } from '@/components/blocks/Card'
+import { Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '@/components/blocks'
+import { Card, ICardProps } from '@/components/blocks/Card'
+import { Title } from '@/components/ui'
+import { SORT_OPTIONS } from '@/data'
+import { fetchBurgers, selectBurgers } from '@/store/burgers/slice'
+import { initialStateFilter, selectFilter, setFilters } from '@/store/filter/slice'
+import { API_URL_BURGERS } from '@/utils/consts'
 
-import { Card, Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '../../components/blocks'
-import { Title } from '../../components/ui'
-import { SORT_OPTIONS } from '../../data'
-import { fetchBurgers, selectBurgers } from '../../store/burgers/slice'
-import { initialStateFilter, selectFilter, setFilters } from '../../store/filter/slice'
-import { API_URL_BURGERS } from '../../utils/consts'
 import styles from './styles.module.scss'
 
 export const MainPage = () => {

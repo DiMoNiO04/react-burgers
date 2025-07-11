@@ -2,11 +2,11 @@ import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { IconArrow } from '@/components/icons'
+import { SORT_OPTIONS } from '@/data'
+import { selectFilter, setCurrentPage, setSort } from '@/store/filter/slice'
 import { IFilterOption } from '@/utils/interfaces'
 
-import { SORT_OPTIONS } from '../../../data'
-import { selectFilter, setCurrentPage, setSort } from '../../../store/filter/slice'
-import { IconArrow } from '../../icons'
 import styles from './styles.module.scss'
 
 export const Sort = () => {

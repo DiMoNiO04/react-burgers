@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router'
 
-import { BURGER_SIZES } from '../../../data'
-import { changeBurgerCount, removeBurgerCart } from '../../../store/cart/slice'
-import { URLS } from '../../../utils/urls'
-import { IconClose, IconMinus, IconPlus } from '../../icons'
+import { IconClose, IconMinus, IconPlus } from '@/components/icons'
+import { BURGER_SIZES } from '@/data'
+import { changeBurgerCount, removeBurgerCart } from '@/store/cart/slice'
+import { URLS } from '@/utils/urls'
+
 import styles from './styles.module.scss'
 
 export interface ICardCartProps {

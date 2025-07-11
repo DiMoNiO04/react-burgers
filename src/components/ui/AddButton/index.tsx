@@ -1,4 +1,5 @@
-import { IconPlus } from '../../icons'
+import { IconPlus } from '@/components/icons'
+
 import styles from './styles.module.scss'
 
 interface IAddButtonProps {

@@ -1,4 +1,5 @@
-import { BtnBack, Title } from '../../ui'
+import { BtnBack, Title } from '@/components/ui'
+
 import styles from './styles.module.scss'
 
 export const CartEmpty = () => {

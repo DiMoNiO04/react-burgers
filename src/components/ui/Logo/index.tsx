@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 
-import { URLS } from '../../../utils/urls'
+import { URLS } from '@/utils/urls'
+
 import styles from './styles.module.scss'
 
 export const Logo = () => {

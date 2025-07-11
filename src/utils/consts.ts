@@ -1,4 +1,4 @@
-import { BURGER_TYPES } from '../data'
+import { BURGER_TYPES } from '@/data'
 
 export const CHEESE_TYPE: number | undefined = BURGER_TYPES.find((item) => item.name === 'Острый')?.value
 export const PRICE_CHEESE_TYPE: number = 0.3

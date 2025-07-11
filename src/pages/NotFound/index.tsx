@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
 
-import { BtnBack, Title } from '../../components/ui'
-import { URLS } from '../../utils/urls'
+import { BtnBack, Title } from '@/components/ui'
+import { URLS } from '@/utils/urls'
+
 import styles from './styles.module.scss'
 
 export const NotFoundPage = () => {

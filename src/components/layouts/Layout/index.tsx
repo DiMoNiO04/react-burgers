@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from 'react-router'
 
-import { URLS } from '../../../utils/urls'
-import { BtnScroll } from '../../ui'
+import { BtnScroll } from '@/components/ui'
+import { URLS } from '@/utils/urls'
+
 import { Header } from '../Header'
 import { Wrapper } from '../Wrapper'
 

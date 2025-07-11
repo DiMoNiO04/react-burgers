@@ -1,5 +1,6 @@
-import { Search } from '../../blocks'
-import { HeaderCart, Logo } from '../../ui'
+import { Search } from '@/components/blocks'
+import { HeaderCart, Logo } from '@/components/ui'
+
 import styles from './styles.module.scss'
 
 interface IHeaderProps {

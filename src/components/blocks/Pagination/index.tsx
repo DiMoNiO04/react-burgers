@@ -1,7 +1,8 @@
 import ReactPaginate from 'react-paginate'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { selectFilter, setCurrentPage } from '../../../store/filter/slice'
+import { selectFilter, setCurrentPage } from '@/store/filter/slice'
+
 import styles from './styles.module.scss'
 
 interface ISelectedItem {
