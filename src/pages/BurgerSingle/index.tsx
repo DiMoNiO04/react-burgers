@@ -3,7 +3,8 @@ import { useParams } from 'react-router'
 
 import { Card, ErrorContent, SkeletonCard } from '@/components/blocks'
 import { Title } from '@/components/ui'
-import { fetchSingleBurger, selectSingleBurger } from '@/store/singleBurger/slice'
+import { fetchSingleBurger } from '@/store/singleBurger/actions'
+import { selectSingleBurger } from '@/store/singleBurger/selectors'
 import { useAppDispatch, useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'

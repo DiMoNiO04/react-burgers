@@ -6,9 +6,11 @@ import { Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '@/comp
 import { Card } from '@/components/blocks/Card'
 import { Title } from '@/components/ui'
 import { SORT_OPTIONS } from '@/data'
-import { fetchBurgers, selectBurgers } from '@/store/burgers/slice'
+import { fetchBurgers } from '@/store/burgers/actions'
+import { selectBurgers } from '@/store/burgers/selectors'
 import { IBurger } from '@/store/burgers/types'
-import { initialStateFilter, selectFilter, setFilters } from '@/store/filter/slice'
+import { selectFilter } from '@/store/filter/selectors'
+import { initialStateFilter, setFilters } from '@/store/filter/slice'
 import { useAppDispatch, useAppSelector } from '@/store/store'
 import { API_URL_BURGERS } from '@/utils/consts'
 

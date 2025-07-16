@@ -1,5 +1,5 @@
 import { CardCart, CartBottom, CartEmpty, CartHeader } from '@/components/blocks'
-import { selectCart } from '@/store/cart/slice'
+import { selectCart } from '@/store/cart/selectors'
 import { useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'

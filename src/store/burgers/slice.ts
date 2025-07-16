@@ -1,12 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { EStatus } from '@/utils/enums'
 
-import { RootState } from '../store'
-import { IBurger, IBurgersSliceState, IFetchBurgersProps } from './types'
-
-export const fetchBurgers = createAsyncThunk<IBurger[], IFetchBurgersProps>('burgers/fetchBurgers', async ({ apiUrl }) => (await axios.get<IBurger[]>(apiUrl)).data)
+import { fetchBurgers } from './actions'
+import { IBurger, IBurgersSliceState } from './types'
 
 export const initialStateBurgers: IBurgersSliceState = {
   burgers: [],
@@ -40,5 +37,3 @@ export const burgersSlice = createSlice({
 
 export const { setBurgers } = burgersSlice.actions
 export default burgersSlice.reducer
-
-export const selectBurgers = (state: RootState) => state.burgers

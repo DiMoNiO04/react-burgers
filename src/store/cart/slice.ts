@@ -1,17 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { RootState } from '../store'
+import { getCartFromStorage } from '@/utils/cartStorage'
+import { recalculateTotals } from '@/utils/recalculateTotals'
+
 import { IBurgerCart, ICartSliceState, IChangeBurgerCountPayload, IRemoveBurgerPayload } from './types'
 
-export const initialStateCart: ICartSliceState = {
-  totalPrice: 0,
-  totalCount: 0,
-  burgers: [],
-}
+const { burgers, totalPrice, totalCount } = getCartFromStorage()
 
-const recalculateTotals = (state: ICartSliceState) => {
-  state.totalPrice = Number(state.burgers.reduce((sum, burger) => sum + burger.size.price * burger.count, 0).toFixed(2))
-  state.totalCount = state.burgers.reduce((count, burger) => count + burger.count, 0)
+export const initialStateCart: ICartSliceState = {
+  burgers,
+  totalPrice,
+  totalCount,
 }
 
 export const cartSlice = createSlice({
@@ -32,7 +31,9 @@ export const cartSlice = createSlice({
         })
       }
 
-      recalculateTotals(state)
+      const totals = recalculateTotals(state.burgers)
+      state.totalPrice = totals.totalPrice
+      state.totalCount = totals.totalCount
     },
 
     changeBurgerCount: (state, action: PayloadAction<IChangeBurgerCountPayload>) => {
@@ -47,7 +48,9 @@ export const cartSlice = createSlice({
         }
       }
 
-      recalculateTotals(state)
+      const totals = recalculateTotals(state.burgers)
+      state.totalPrice = totals.totalPrice
+      state.totalCount = totals.totalCount
     },
 
     removeBurgerCart: (state, action: PayloadAction<IRemoveBurgerPayload>) => {
@@ -55,7 +58,9 @@ export const cartSlice = createSlice({
 
       state.burgers = state.burgers.filter((burger) => !(burger.id === id && burger.size.id === sizeId && burger.type.value === typeValue))
 
-      recalculateTotals(state)
+      const totals = recalculateTotals(state.burgers)
+      state.totalPrice = totals.totalPrice
+      state.totalCount = totals.totalCount
     },
 
     clearCart: () => initialStateCart,
@@ -64,7 +69,3 @@ export const cartSlice = createSlice({
 
 export const { addBurgerCart, removeBurgerCart, changeBurgerCount, clearCart } = cartSlice.actions
 export default cartSlice.reducer
-
-export const selectCart = (state: RootState) => state.cart
-export const selectCardCart = (id: string) => (state: RootState) =>
-  state.cart.burgers.filter((burger: IBurgerCart) => burger.id === id).reduce((sum, burger) => sum + (burger.count || 0), 0)

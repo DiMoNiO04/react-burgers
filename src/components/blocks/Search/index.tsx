@@ -2,7 +2,8 @@ import debounce from 'lodash.debounce'
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconClose, IconSearch } from '@/components/icons'
-import { selectFilter, setCurrentPage, setSearch } from '@/store/filter/slice'
+import { selectFilter } from '@/store/filter/selectors'
+import { setCurrentPage, setSearch } from '@/store/filter/slice'
 import { useAppDispatch, useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'

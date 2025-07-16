@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IFilterOption } from '@/utils/interfaces'
 
 import { BURGER_CATEGORIES, SORT_OPTIONS } from '../../data/filters'
-import { RootState } from '../store'
 import { IFilterSliceState } from './types'
 
 export const initialStateFilter: IFilterSliceState = {
@@ -40,5 +39,3 @@ export const filterSlice = createSlice({
 
 export const { setCategory, setSort, setCurrentPage, setSearch, setFilters } = filterSlice.actions
 export default filterSlice.reducer
-
-export const selectFilter = (state: RootState) => state.filter

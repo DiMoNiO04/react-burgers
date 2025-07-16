@@ -3,27 +3,13 @@ import { Link } from 'react-router'
 import { IconClose, IconMinus, IconPlus } from '@/components/icons'
 import { BURGER_SIZES } from '@/data'
 import { changeBurgerCount, removeBurgerCart } from '@/store/cart/slice'
+import { IBurgerCart } from '@/store/cart/types'
 import { useAppDispatch } from '@/store/store'
 import { EUrls } from '@/utils/enums'
 
 import styles from './styles.module.scss'
 
-export interface ICardCartProps {
-  id: string
-  imageUrl: string
-  title: string
-  type: {
-    name: string
-    value: number
-  }
-  count: number
-  size: {
-    id: number
-    price: number
-  }
-}
-
-export const CardCart = ({ id, imageUrl, title, type, count, size }: ICardCartProps) => {
+export const CardCart = ({ id, imageUrl, title, type, count, size }: IBurgerCart) => {
   const dispatch = useAppDispatch()
 
   const handleIncrease = () => {

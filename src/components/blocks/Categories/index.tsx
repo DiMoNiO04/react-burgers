@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 
 import { BURGER_CATEGORIES } from '@/data'
-import { selectFilter, setCategory, setCurrentPage } from '@/store/filter/slice'
+import { selectFilter } from '@/store/filter/selectors'
+import { setCategory, setCurrentPage } from '@/store/filter/slice'
 import { useAppDispatch, useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'

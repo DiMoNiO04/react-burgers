@@ -1,6 +1,7 @@
 import ReactPaginate from 'react-paginate'
 
-import { selectFilter, setCurrentPage } from '@/store/filter/slice'
+import { selectFilter } from '@/store/filter/selectors'
+import { setCurrentPage } from '@/store/filter/slice'
 import { useAppDispatch, useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'

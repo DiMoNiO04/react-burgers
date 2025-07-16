@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 
 import { IconArrowRound } from '@/components/icons'
-import { selectCart } from '@/store/cart/slice'
+import { selectCart } from '@/store/cart/selectors'
 import { useAppSelector } from '@/store/store'
 import { EUrls } from '@/utils/enums'
 

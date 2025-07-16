@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 
 import { IconArrow } from '@/components/icons'
 import { SORT_OPTIONS } from '@/data'
-import { selectFilter, setCurrentPage, setSort } from '@/store/filter/slice'
+import { selectFilter } from '@/store/filter/selectors'
+import { setCurrentPage, setSort } from '@/store/filter/slice'
 import { useAppDispatch, useAppSelector } from '@/store/store'
 import { IFilterOption } from '@/utils/interfaces'
 
