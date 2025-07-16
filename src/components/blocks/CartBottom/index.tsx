@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router'
 
 import { IconArrowRound } from '@/components/icons'
 import { selectCart } from '@/store/cart/slice'
-import { URLS } from '@/utils/urls'
+import { useAppSelector } from '@/store/store'
+import { EUrls } from '@/utils/enums'
 
 import styles from './styles.module.scss'
 
 export const CartBottom = () => {
-  const { totalPrice, totalCount } = useSelector(selectCart)
+  const { totalPrice, totalCount } = useAppSelector(selectCart)
 
   return (
     <div className={styles.block}>
@@ -21,7 +21,7 @@ export const CartBottom = () => {
         </div>
       </div>
       <div className={styles.btns}>
-        <Link to={URLS.MAIN} className={styles.btnBack}>
+        <Link to={EUrls.MAIN} className={styles.btnBack}>
           <IconArrowRound />
           <span>Вернуться назад</span>
         </Link>

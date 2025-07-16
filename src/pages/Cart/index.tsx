@@ -1,12 +1,11 @@
-import { useSelector } from 'react-redux'
-
 import { CardCart, CartBottom, CartEmpty, CartHeader } from '@/components/blocks'
 import { selectCart } from '@/store/cart/slice'
+import { useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'
 
 export const CartPage = () => {
-  const { burgers, totalCount } = useSelector(selectCart)
+  const { burgers, totalCount } = useAppSelector(selectCart)
 
   return (
     <>

@@ -1,7 +1,7 @@
 import ReactPaginate from 'react-paginate'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { selectFilter, setCurrentPage } from '@/store/filter/slice'
+import { useAppDispatch, useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'
 
@@ -10,9 +10,9 @@ interface ISelectedItem {
 }
 
 export const Pagination = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
-  const { currentPage } = useSelector(selectFilter)
+  const { currentPage } = useAppSelector(selectFilter)
 
   const handleChangeCurrentPage = (event: ISelectedItem) => dispatch(setCurrentPage(event.selected + 1))
 

@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 
 import { IconCart, IconCartClear } from '@/components/icons'
 import { ConfirmModal, Title } from '@/components/ui'
 import { clearCart } from '@/store/cart/slice'
+import { useAppDispatch } from '@/store/store'
 
 import styles from './styles.module.scss'
 
 export const CartHeader = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const [openConfirmModalClear, setOpenConfirmModalClear] = useState<boolean>(false)
 

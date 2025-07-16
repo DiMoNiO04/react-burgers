@@ -1,12 +1,12 @@
 import { Link } from 'react-router'
 
-import { URLS } from '@/utils/urls'
+import { EUrls } from '@/utils/enums'
 
 import styles from './styles.module.scss'
 
 export const Logo = () => {
   return (
-    <Link to={URLS.MAIN} className={styles.block}>
+    <Link to={EUrls.MAIN} className={styles.block}>
       <div className={styles.logoImg}>
         <img src="/logo.png" alt="" />
       </div>

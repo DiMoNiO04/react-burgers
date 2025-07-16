@@ -1,8 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+import { IFilterOption } from '@/utils/interfaces'
 
 import { BURGER_CATEGORIES, SORT_OPTIONS } from '../../data/filters'
+import { RootState } from '../store'
+import { IFilterSliceState } from './types'
 
-export const initialStateFilter = {
+export const initialStateFilter: IFilterSliceState = {
   category: BURGER_CATEGORIES[0].value,
   sort: SORT_OPTIONS[0],
   currentPage: 1,
@@ -13,19 +17,19 @@ export const filterSlice = createSlice({
   name: 'filter',
   initialState: initialStateFilter,
   reducers: {
-    setCategory: (state, action) => {
+    setCategory: (state, action: PayloadAction<number>) => {
       state.category = action.payload
     },
-    setSort: (state, action) => {
+    setSort: (state, action: PayloadAction<IFilterOption<string>>) => {
       state.sort = action.payload
     },
-    setSearch: (state, action) => {
+    setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload
     },
-    setCurrentPage: (state, action) => {
+    setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload
     },
-    setFilters: (state, action) => {
+    setFilters: (state, action: PayloadAction<IFilterSliceState>) => {
       state.sort = action.payload.sort
       state.currentPage = Number(action.payload.currentPage)
       state.category = Number(action.payload.category)
@@ -37,4 +41,4 @@ export const filterSlice = createSlice({
 export const { setCategory, setSort, setCurrentPage, setSearch, setFilters } = filterSlice.actions
 export default filterSlice.reducer
 
-export const selectFilter = (state) => state.filter
+export const selectFilter = (state: RootState) => state.filter

@@ -1,16 +1,16 @@
 import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { IconArrow } from '@/components/icons'
 import { SORT_OPTIONS } from '@/data'
 import { selectFilter, setCurrentPage, setSort } from '@/store/filter/slice'
+import { useAppDispatch, useAppSelector } from '@/store/store'
 import { IFilterOption } from '@/utils/interfaces'
 
 import styles from './styles.module.scss'
 
 export const Sort = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const sortRef = useRef<HTMLDivElement>(null)
 
@@ -18,7 +18,7 @@ export const Sort = () => {
 
   const toggleOpenSort = () => setIsOpenSort((prev) => !prev)
 
-  const { sort } = useSelector(selectFilter)
+  const { sort } = useAppSelector(selectFilter)
 
   const onClickSort = (value: IFilterOption<string>) => {
     dispatch(setCurrentPage(1))

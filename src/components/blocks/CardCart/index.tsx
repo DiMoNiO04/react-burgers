@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router'
 
 import { IconClose, IconMinus, IconPlus } from '@/components/icons'
 import { BURGER_SIZES } from '@/data'
 import { changeBurgerCount, removeBurgerCart } from '@/store/cart/slice'
-import { URLS } from '@/utils/urls'
+import { useAppDispatch } from '@/store/store'
+import { EUrls } from '@/utils/enums'
 
 import styles from './styles.module.scss'
 
@@ -24,7 +24,7 @@ export interface ICardCartProps {
 }
 
 export const CardCart = ({ id, imageUrl, title, type, count, size }: ICardCartProps) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleIncrease = () => {
     dispatch(
@@ -60,7 +60,7 @@ export const CardCart = ({ id, imageUrl, title, type, count, size }: ICardCartPr
 
   return (
     <div className={styles.card}>
-      <Link to={`${URLS.SINGLE_BURGER}${id}`} className={styles.mainInfo}>
+      <Link to={`${EUrls.SINGLE_BURGER}${id}`} className={styles.mainInfo}>
         <div className={styles.img}>
           <img src={imageUrl} alt="" />
         </div>

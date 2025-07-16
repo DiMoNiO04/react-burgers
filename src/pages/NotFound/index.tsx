@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 
 import { BtnBack, Title } from '@/components/ui'
-import { URLS } from '@/utils/urls'
+import { EUrls } from '@/utils/enums'
 
 import styles from './styles.module.scss'
 
@@ -14,7 +14,7 @@ export const NotFoundPage = () => {
         <p className={styles.desc}>К сожалению данная страница отсутствует в нашем интернет-магазине</p>
         <div className={styles.btns}>
           <BtnBack />
-          <Link to={URLS.MAIN} className={styles.btn}>
+          <Link to={EUrls.MAIN} className={styles.btn}>
             На главную
           </Link>
         </div>

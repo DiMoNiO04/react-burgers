@@ -8,3 +8,8 @@ export interface IFilterOption<T> {
 export interface IChildrenProps {
   children: ReactNode
 }
+
+export interface ISize {
+  id: number
+  price: number
+}

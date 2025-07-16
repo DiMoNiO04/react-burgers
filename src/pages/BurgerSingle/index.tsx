@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import { Card, ErrorContent, SkeletonCard } from '@/components/blocks'
 import { Title } from '@/components/ui'
 import { fetchSingleBurger, selectSingleBurger } from '@/store/singleBurger/slice'
+import { useAppDispatch, useAppSelector } from '@/store/store'
 
 import styles from './styles.module.scss'
 
 export const BurgerSinglePage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { id } = useParams()
-  const { burger, status } = useSelector(selectSingleBurger)
+  const { burger, status } = useAppSelector(selectSingleBurger)
 
   useEffect(() => {
     if (id) {
@@ -23,7 +23,7 @@ export const BurgerSinglePage = () => {
     <>
       {status === 'error' ? (
         <ErrorContent />
-      ) : (
+      ) : burger ? (
         <div>
           <Title title={burger?.title} />
           {status === 'loading' ? (
@@ -34,7 +34,7 @@ export const BurgerSinglePage = () => {
             </div>
           )}
         </div>
-      )}
+      ) : null}
     </>
   )
 }

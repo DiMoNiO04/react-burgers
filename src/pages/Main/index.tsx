@@ -1,27 +1,28 @@
 import qs from 'qs'
 import { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import { Categories, ErrorContent, Pagination, SkeletonCard, Sort } from '@/components/blocks'
-import { Card, ICardProps } from '@/components/blocks/Card'
+import { Card } from '@/components/blocks/Card'
 import { Title } from '@/components/ui'
 import { SORT_OPTIONS } from '@/data'
 import { fetchBurgers, selectBurgers } from '@/store/burgers/slice'
+import { IBurger } from '@/store/burgers/types'
 import { initialStateFilter, selectFilter, setFilters } from '@/store/filter/slice'
+import { useAppDispatch, useAppSelector } from '@/store/store'
 import { API_URL_BURGERS } from '@/utils/consts'
 
 import styles from './styles.module.scss'
 
 export const MainPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const isSearch = useRef<boolean>(false)
   const isMounted = useRef<boolean>(false)
 
-  const { burgers, status } = useSelector((state) => selectBurgers(state))
-  const { category, sort, currentPage, search } = useSelector((state) => selectFilter(state))
+  const { burgers, status } = useAppSelector((state) => selectBurgers(state))
+  const { category, sort, currentPage, search } = useAppSelector((state) => selectFilter(state))
 
   const getBurgers = async () => {
     const categoryValue: string = category > 0 ? `&category=${category}` : ''
@@ -93,7 +94,7 @@ export const MainPage = () => {
   }, [category, sort, currentPage, search])
 
   const skeletonBurgers = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />)
-  const burgerCards = burgers.map((burger: ICardProps) => <Card key={burger.id} {...burger} />)
+  const burgerCards = burgers.map((burger: IBurger) => <Card key={burger.id} {...burger} />)
 
   return (
     <>
